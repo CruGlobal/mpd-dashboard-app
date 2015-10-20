@@ -328,6 +328,27 @@ body {
   border-color: #ddd;
   border-color: rgba(0, 0, 0, 0.15);
 }
+.mpdhealth .chart-colors .color1 {
+  background-color: #5cb85c;
+}
+.mpdhealth .chart-colors .color2 {
+  background-color: #DF691A;
+}
+.mpdhealth .chart-colors .color3 {
+  background-color: #f0ad4e;
+}
+.mpdhealth .chart-colors .color4 {
+  background-color: #d9534f;
+}
+.mpdhealth .chart-colors .color5 {
+  background-color: #5bc0de;
+}
+.support-trend .chart-colors .color1 {
+  background-color: #5cb85c;
+}
+.support-trend .chart-colors .color2 {
+  background-color: #DF691A;
+}
 .table-countries thead > tr:first-of-type > th {
   text-align: center;
 }

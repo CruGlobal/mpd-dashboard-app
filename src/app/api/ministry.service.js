@@ -5,7 +5,7 @@
 
  Response:
  {
- 	country: "Russian Federation",
+ 	name: "Russian Federation",
  	iso_code: "RU",
  	min_code: "RUS",
  	mpd_health: [
@@ -24,87 +24,134 @@
  }
  */
 
-/**
-
- google.load("visualization", "1", { packages: ["corechart"] });
-
- google.setOnLoadCallback(drawChart);
-
- $(function () {
-        $('.dropdown-toggle').dropdown();
-    });
-
- function drawChart() {
-
-
-        var data2 = google.visualization.arrayToDataTable([
- ['Support Level', 'Percentage Raised'], ['>100% Raised', 35],['80-100% Raised', 18],['50-80% Raised', 19],['<50% Raised', 5],['No Budget', 0]
-        ]);
-
-        var options2 = {
-            title: 'Staff MPD Health',
-            pieHole: 0.4, reverseCategories: false,
-            chartArea: { left: 40, top: 20, width: "120%", height: "100%" },
-            slices: [{ color: 'green' },{ color: '#ff9b00' }, { color: '#ff5f08' }, { color: 'red' }, { color: 'grey', offset: 0.1 }]
-};
-
-var chart2 = new google.visualization.PieChart(document.getElementById('donutchart'));
-
-
-function selectHandler() {
-	var selectedItem = chart2.getSelection()[0];
-	if (selectedItem) {
-		var section = data2.getValue(selectedItem.row, 0);
-		$('.listDetail').hide();
-		if (section.indexOf('<50%') > -1) $('#d_lessthan50').show();
-
-		if (section.indexOf('50-80%') > -1) $('#d_low').show();
-		// if (section.indexOf('80-90%') > -1) $('#d_medium').show();
-		if (section.indexOf('80-100%') > -1) $('#d_high').show();
-		if (section.indexOf('>100%') > -1) $('#d_full').show();
-		if (section.indexOf('No Budget') > -1) $('#d_none').show();
-
-	}
-}
-google.visualization.events.addListener(chart2, 'select', selectHandler);
-
-chart2.draw(data2, options2);
-
-if(true){
-	var data = google.visualization.arrayToDataTable([
-		['Period', 'Average Support Level', 'Staff with more than 90%'],
-		['Oct 14', 1.01, 0.21 ], ['Nov 14', 1.27, 0.33 ], ['Dec 14', 0.77, 0.15 ], ['Jan 15', 3.00, 0.44 ], ['Feb 15', 1.33, 0.18 ], ['Mar 15', 2.25, 0.32 ], ['Apr 15', 8.12, 0.21 ], ['May 15', 0.91, 0.27 ], ['Jun 15', 1.97, 0.29 ], ['Jul 15', 0.81, 0.19 ], ['Aug 15', 0.00, 0.00 ], ['Sep 15', 0.95, 0.25 ], ['Oct 15', 1.07, 0.32 ],
-	]);
-	var formatter = new google.visualization.NumberFormat({
-		pattern: '#%',
-		fractionDigits: 2
-	});
-	formatter.format(data, 1);
-	formatter.format(data, 2);
-	var options = {
-		title: 'Average Support Progress', vAxis: { format: '#,###%' }
-	};
-
-	var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-	chart.draw(data, options);
-
-}
-else{
-	$('#chart_div').hide();
-}
-
-
-
-}
- */
-
-
 (function ( module ) {
 	'use strict';
 	module.factory( 'Ministry', function ( $log ) {
 		return {
 			get: function () {
-				return {};
+				return {
+					name:            'Australia',
+					min_code:        'AUS',
+					iso_code:        'AU',
+					mpd_health:      [
+						[
+							"Alijsal Stonspi",
+							"Deveoma Dugbea",
+							"Dwayleo Balemaul",
+							"Cardev Dangstr",
+							"Katlshay Fulrydi"
+						],
+						[
+							"Keira Stone",
+							"Hannah Matthews",
+							"Holly Hill",
+							"Samara Massey",
+							"Susan Casey",
+							"Mckinley Powers",
+							"Kiara Lester",
+							"Parker Oliver"
+						],
+						[
+							"Keljust Chehol",
+							"Chardav Stasum",
+							"Jeagian Blaalwa",
+							"Vancbra Marhow",
+							"Teralle Stinpink",
+							"Skylnic Delport",
+							"Vincjay Heyeurwi",
+							"Keladan Rowshe",
+							"Gaibry Postbaxe",
+							"Jamazach Sebbac",
+							"Babyvic Spomaul",
+							"Alerei Wichhea",
+							"Lawrwarr Hostsha",
+							"Jaibyr Saytoy",
+							"Mariway Sattgra",
+							"Caelall Thorwya",
+							"Reginig Eademort",
+							"Nestdarr Atwestil",
+							"Abbmaya Forlscaf",
+							"Abriclar Gaythai",
+							"Jewejose Harmfar",
+							"Krisabag Dorwoo",
+							"Mardal Wandlan",
+							"Karcha Allscox",
+							"Desttris Farshr",
+							"Dendev Coolara",
+							"Liam Adams",
+							"Jake Davies",
+							"Kai John",
+							"Cameron Watson",
+							"Theo Atkinson",
+							"Anthony Holcomb",
+							"Deangelo Skinner",
+							"Vance Bush",
+							"Freddy Doyle",
+							"Patrick Paul",
+							"Melissa Bates",
+							"Charlotte Mccarthy"
+						],
+						[
+							"Ramoeuge Chanew",
+							"Brezach Beared",
+							"Garrlay Marcar",
+							"Perrtre Brithaym",
+							"Quinayd Cathoxto",
+							"Maxroy Frithig",
+							"Nicodas Jennbach",
+							"Kendtav Levewad",
+							"Darrmar Sumnpan",
+							"Omaedw Ricksymp",
+							"Kiarsari Windpost",
+							"Karmica Wilhass",
+							"Shelayl Chammou",
+							"Abagdesi Parnfree",
+							"Eilkyl Wheedm",
+							"Alekae Kearhax",
+							"Rylejada Lakiping",
+							"Natlexi Larmoldr",
+							"Ashhal Parrham",
+							"Jamydian Holdor",
+							"Tessamel Sandhaym",
+							"Karjayl Widdwatk",
+							"Annjani Shofarr",
+							"Dasikay Benngre",
+							"Ajamac Golscho",
+							"Tialin Daftbar",
+							"Ariabi Norcumb",
+							"Chrison Peakeel",
+							"Skytatu Taring"
+						],
+						[
+							"Dexzach Clafair",
+							"Bryram Blunhol",
+							"Samiglen Hendall",
+							"Bencla Lathgue",
+							"Donant Curwag",
+							"Sagecae Liptfitz",
+							"Zanmarq Hentred",
+							"Karlger Earenc",
+							"Quinway Linbir",
+							"Neihou Turrpet"
+						]
+					],
+					average_support: [
+						//['Period', 'Average Support Level', 'Staff with more than 90%'],
+						['2014-10', 1.15, 0.46],
+						['2014-11', 0.95, 0.40],
+						['2014-12', 1.04, 0.36],
+						['2015-01', 1.10, 0.47],
+						['2015-02', 1.05, 0.53],
+						['2015-03', 1.09, 0.46],
+						['2015-04', 1.12, 0.45],
+						['2015-05', 1.35, 0.55],
+						['2015-06', 1.28, 0.52],
+						['2015-07', 1.27, 0.41],
+						['2015-08', 3.05, 0.54],
+						['2015-09', 1.20, 0.52],
+						['2015-10', 1.15, 0.46]
+					]
+				};
 			}
 		}
 	} );

@@ -2,7 +2,7 @@
 	'use strict';
 
 	module.config( function ( $stateProvider, $urlRouterProvider ) {
-		$urlRouterProvider.otherwise( '/' );
+		$urlRouterProvider.otherwise( '/countries' );
 
 		$stateProvider.state( 'app', {
 			abstract:    true,

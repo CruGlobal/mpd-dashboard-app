@@ -81,6 +81,7 @@
 	<script type="application/javascript" src="app/components/percent.filter.js"></script>
 
 	<script type="application/javascript" src="app/api/countries.service.js"></script>
+	<script type="application/javascript" src="app/api/ministry.service.js"></script>
 	<script type="application/javascript" src="app/app.config.js"></script>
 	<script type="application/javascript" src="app/settings/settings.service.js"></script>
 	<script type="application/javascript" src="app/states/dashboard/countries/countries.controller.js"></script>
