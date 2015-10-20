@@ -1,4 +1,4 @@
-<?php namespace GlobalTechnology\MPDCalculator {
+<?php namespace GlobalTechnology\MPDDashboard {
 
 	use Httpful\Mime;
 	use Httpful\Request;

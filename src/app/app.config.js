@@ -8,7 +8,7 @@
 
 	// Initialize Application Settings
 	module.config( function ( SettingsProvider ) {
-		SettingsProvider.setConfig( window.MPDCalculator.config );
+		SettingsProvider.setConfig( window.MPDDashboard.config );
 	} );
 
 	// Configure Debug Logging
@@ -18,7 +18,7 @@
 
 	// Configure HTTP interceptors
 	module.config( function ( $httpProvider ) {
-		$httpProvider.interceptors.push( 'Session' );
+//		$httpProvider.interceptors.push( 'Session' );
 	} );
 
 	// Configure Growl
@@ -28,14 +28,10 @@
 		growlProvider.globalTimeToLive( {success: 10000, error: -1, warning: -1, info: 10000} );
 	} );
 
-	module.config( function ( uiSelectConfig ) {
-		uiSelectConfig.theme = 'bootstrap';
-	} );
-
 	module.run( function ( $log, $rootScope ) {
 		$rootScope.$on( '$stateChangeError', function ( event, toState, toParams, fromState, fromParams, error ) {
 			$log.error( '$stateChangeError:', toState, toParams, error );
 		} );
 	} );
 
-})( angular.module( 'mpdCalculator' ) );
+})( angular.module( 'mpdDashboard' ) );

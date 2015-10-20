@@ -1,4 +1,4 @@
-<?php namespace GlobalTechnology\MPDCalculator {
+<?php namespace GlobalTechnology\MPDDashboard {
 
 	// Require phpCAS, composer does not autoload it.
 	require_once( dirname( dirname( __FILE__ ) ) . '/vendor/jasig/phpcas/source/CAS.php' );
