@@ -1,7 +1,7 @@
 (function ( module ) {
 	'use strict';
 
-	function MinistryController( $log, $window, $state, mpdHealthData, supportTrendData ) {
+	function MinistryController( $log, $window, $state, mpdHealthData, supportTrendData, ministry ) {
 		this.$state = $state;
 
 		this.mpdHealth = {
@@ -20,19 +20,17 @@
 						color: 'white'
 					}
 				},
-				backgroundColor:     $window.jQuery( '.mpdhealth' ).css( 'backgroundColor' ),
-				pieSliceBorderColor: $window.jQuery( '.mpdhealth' ).css( 'backgroundColor' ),
+				backgroundColor:     $window.jQuery( '.mpd-health' ).css( 'backgroundColor' ),
+				pieSliceBorderColor: $window.jQuery( '.mpd-health' ).css( 'backgroundColor' ),
 				slices:              [
-					{color: $window.jQuery( '.mpdhealth .chart-colors .color1' ).css( 'backgroundColor' )},
-					{color: $window.jQuery( '.mpdhealth .chart-colors .color2' ).css( 'backgroundColor' )},
-					{color: $window.jQuery( '.mpdhealth .chart-colors .color3' ).css( 'backgroundColor' )},
-					{color: $window.jQuery( '.mpdhealth .chart-colors .color4' ).css( 'backgroundColor' )},
-					{color: $window.jQuery( '.mpdhealth .chart-colors .color5' ).css( 'backgroundColor' ), offset: 0.1}
+					{color: $window.jQuery( '.mpd-health .chart-colors .color1' ).css( 'backgroundColor' )},
+					{color: $window.jQuery( '.mpd-health .chart-colors .color2' ).css( 'backgroundColor' )},
+					{color: $window.jQuery( '.mpd-health .chart-colors .color3' ).css( 'backgroundColor' )},
+					{color: $window.jQuery( '.mpd-health .chart-colors .color4' ).css( 'backgroundColor' )},
+					{color: $window.jQuery( '.mpd-health .chart-colors .color5' ).css( 'backgroundColor' ), offset: 0.1}
 				]
 			}
 		};
-
-		$log.debug( $window.google );
 
 		this.supportTrend = {
 			type:    'LineChart',
@@ -48,12 +46,22 @@
 					$window.jQuery( '.support-trend .chart-colors .color1' ).css( 'backgroundColor' ),
 					$window.jQuery( '.support-trend .chart-colors .color2' ).css( 'backgroundColor' )
 				],
-				lineWidth: 3,
-				pointSize: 4,
-				hAxis:           {baselineColor: 'white', format: 'MMM y', textStyle: { color: 'white'}},
-				vAxis:           {baselineColor: 'white', format: 'percent', textStyle: { color: 'white'}}
+				lineWidth:       3,
+				pointSize:       4,
+				hAxis:           {baselineColor: 'white', format: 'MMM y', textStyle: {color: 'white'}},
+				vAxis:           {baselineColor: 'white', format: 'percent', textStyle: {color: 'white'}}
 			}
 		};
+
+		this.onMpdHealthSelect = function ( selectedItem ) {
+			if ( angular.isUndefined( selectedItem ) ) {
+				delete this.staff;
+			}
+			else {
+				this.staffHeading = mpdHealthData[selectedItem.row + 1][0];
+				this.staff = ministry.mpd_health[selectedItem.row];
+			}
+		}
 	}
 
 	module.controller( 'MinistryController', MinistryController );

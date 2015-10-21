@@ -276,7 +276,7 @@
 }
 
 body {
-  padding-top: 60px;
+  padding: 60px 0;
 }
 .navbar-brand {
   font-size: 24px;
@@ -299,11 +299,6 @@ body {
   border-radius: 0 0 0 0;
   margin-bottom: 0;
 }
-.navbar-section + .dashboard-well {
-  margin-top: 0;
-  border-radius: 0 0 0 0;
-  background-color: #697d91;
-}
 .navbar-inverse .label-primary {
   background-color: #a64e13;
 }
@@ -318,36 +313,17 @@ body {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   -webkit-box-shadow: none;
   box-shadow: none;
-  margin-top: 0;
-  border-radius: 0 0 0 0;
   background-color: #697d91;
   padding-bottom: 0;
-  padding-top: 0;
 }
 .dashboard-well blockquote {
   border-color: #ddd;
   border-color: rgba(0, 0, 0, 0.15);
 }
-.mpdhealth .chart-colors .color1 {
-  background-color: #5cb85c;
-}
-.mpdhealth .chart-colors .color2 {
-  background-color: #DF691A;
-}
-.mpdhealth .chart-colors .color3 {
-  background-color: #f0ad4e;
-}
-.mpdhealth .chart-colors .color4 {
-  background-color: #d9534f;
-}
-.mpdhealth .chart-colors .color5 {
-  background-color: #5bc0de;
-}
-.support-trend .chart-colors .color1 {
-  background-color: #5cb85c;
-}
-.support-trend .chart-colors .color2 {
-  background-color: #DF691A;
+nav + .dashboard-well {
+  margin-top: 0;
+  border-radius: 0 0 0 0;
+  padding-top: 0;
 }
 .table-countries thead > tr:first-of-type > th {
   text-align: center;
@@ -363,4 +339,53 @@ body {
 }
 .countries-geochart-colors .success {
   background-color: #5cb85c;
+}
+.mpd-health .chart-colors .color1 {
+  background-color: #5cb85c;
+}
+.mpd-health .chart-colors .color2 {
+  background-color: #DF691A;
+}
+.mpd-health .chart-colors .color3 {
+  background-color: #f0ad4e;
+}
+.mpd-health .chart-colors .color4 {
+  background-color: #d9534f;
+}
+.mpd-health .chart-colors .color5 {
+  background-color: #5bc0de;
+}
+.support-trend .chart-colors .color1 {
+  background-color: #5cb85c;
+}
+.support-trend .chart-colors .color2 {
+  background-color: #DF691A;
+}
+.table.table-ministry > tbody > tr td:first-of-type {
+  white-space: nowrap;
+}
+.table.table-ministry > tbody > tr > td {
+  font-family: inherit;
+  font-weight: 300;
+  line-height: 1.1;
+  color: inherit;
+  margin-top: 10.5px;
+  margin-bottom: 10.5px;
+  font-size: 19px;
+}
+.table.table-ministry > tbody > tr > td small,
+.table.table-ministry > tbody > tr > td .small {
+  font-weight: normal;
+  line-height: 1;
+  color: #EBEBEB;
+}
+.table.table-ministry > tbody > tr > td small,
+.table.table-ministry > tbody > tr > td .small {
+  font-size: 75%;
+}
+.table.table-ministry > tbody > tr td + td {
+  font-weight: bold;
+}
+.table.table-ministry > tbody > tr td > small {
+  font-size: 50%;
 }

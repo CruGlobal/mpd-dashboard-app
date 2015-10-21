@@ -1,4 +1,4 @@
-.mpdhealth .chart-colors {
+.mpd-health .chart-colors {
 	.color1 {
 		background-color: @brand-success;
 	}
@@ -22,5 +22,20 @@
 	}
 	.color2 {
 		background-color: @brand-primary;
+	}
+}
+
+.table.table-ministry > tbody > tr {
+	td:first-of-type {
+		white-space: nowrap;
+	}
+	> td {
+		.h4;
+	}
+	td + td {
+		font-weight: bold;
+	}
+	td > small {
+		font-size: 50%;
 	}
 }

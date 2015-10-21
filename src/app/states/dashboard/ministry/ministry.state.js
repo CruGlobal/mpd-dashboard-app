@@ -13,11 +13,11 @@
 				'mpdHealthData':    function ( ministry ) {
 					return [
 						['Support Level', 'Percentage Raised'],
-						['> 100%', ministry.mpd_health[4].length],
-						['80 - 100%', ministry.mpd_health[3].length],
+						['> 100%', ministry.mpd_health[0].length],
+						['80 - 100%', ministry.mpd_health[1].length],
 						['50 - 80%', ministry.mpd_health[2].length],
-						['< 50%', ministry.mpd_health[1].length],
-						['No Budget', ministry.mpd_health[0].length]
+						['< 50%', ministry.mpd_health[3].length],
+						['No Budget', ministry.mpd_health[4].length]
 					];
 				},
 				'supportTrendData': function ( $window, $q, googleChartApiPromise, ministry ) {
@@ -77,5 +77,6 @@
 		'mpdDashboard.api.ministry',
 
 		// Dependent States
-		'mpdDashboard.states.dashboard'
+		'mpdDashboard.states.dashboard',
+		'mpdDashboard.states.dashboard.ministry.staffAccount'
 	] ) );
