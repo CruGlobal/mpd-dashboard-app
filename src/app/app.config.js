@@ -16,9 +16,12 @@
 		$logProvider.debugEnabled( SettingsProvider.isDevelopment() );
 	} );
 
-	// Configure HTTP interceptors
-	module.config( function ( $httpProvider ) {
-//		$httpProvider.interceptors.push( 'Session' );
+	// Configure Cas Authenticated Api
+	module.config( function ( casAuthenticatedApiProvider ) {
+		casAuthenticatedApiProvider
+			.setAuthenticationApiBaseUrl( 'http://localhost:3001/v1' )
+			.setTicketUrl( 'http://localhost/~brian/dev-mpd-dashboard/refresh.php' )
+			.addManagedApi( 'http://localhost:3000/v1' );
 	} );
 
 	// Configure Growl

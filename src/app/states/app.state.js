@@ -7,10 +7,6 @@
 		$stateProvider.state( 'app', {
 			abstract:    true,
 			url:         '/',
-			templateUrl: 'app/states/app.html',
-			controller:  function ( $log, $scope, $state ) {
-				$scope.$state = $state;
-			},
 			resolve:     {
 				/*
 				 'session':    function ( $log, Session ) {
@@ -25,7 +21,9 @@
 				 return Ministries.whq().$promise;
 				 }
 				 */
-			}
+			},
+			templateUrl: 'app/states/app.html',
+			controller:  'ApplicationController as app'
 		} );
 	} );
 
@@ -33,5 +31,7 @@
 	.module( 'mpdDashboard.states.app', [
 		// Dependencies
 		'ui.router',
-		'angular-growl'
+		'angular-growl',
+		'ui.bootstrap.collapse',
+		'ui.bootstrap.dropdown'
 	] ) );

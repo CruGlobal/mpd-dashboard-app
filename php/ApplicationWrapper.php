@@ -79,8 +79,8 @@
 			return $casClient;
 		}
 
-		public function getAPIServiceTicket() {
-			return $this->casClient->retrievePT( Config::get( 'measurements.endpoint' ) . '/token', $code, $msg );
+		public function getAPIServiceTicket( $service = false ) {
+			return $this->casClient->retrievePT( $service ? $service : ( Config::get( 'measurements.endpoint' ) . '/token' ), $code, $msg );
 		}
 
 		public function versionUrl( $url ) {

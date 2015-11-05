@@ -1,8 +1,8 @@
 <?php namespace GlobalTechnology\MPDDashboard {
-	require_once( dirname( __FILE__ ) . '/vendor/autoload.php' );
+	require_once( dirname( __FILE__ ) . '/../vendor/autoload.php' );
 	$wrapper = ApplicationWrapper::singleton();
 	$wrapper->casClient->checkAuthentication();
-	$ticket = $wrapper->getAPIServiceTicket();
+	$ticket = $wrapper->getAPIServiceTicket($_REQUEST['service']);
 	if ( $ticket !== false ) {
 		header( 'Content-type: application/json; charset=utf-8', true, 200 );
 		echo json_encode( array(

@@ -325,6 +325,22 @@ nav + .dashboard-well {
   border-radius: 0 0 0 0;
   padding-top: 0;
 }
+.alert-estimated {
+  background-color: #5bc0de;
+  border-color: transparent;
+  color: #EBEBEB;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-bottom: 0;
+}
+.alert-estimated hr {
+  border-top-color: rgba(0, 0, 0, 0);
+}
+.alert-estimated .alert-link {
+  color: #d2d2d2;
+}
 .table-countries thead > tr:first-of-type > th {
   text-align: center;
 }

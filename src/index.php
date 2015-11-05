@@ -27,6 +27,7 @@
 		<script type="application/javascript" src="bower_components/angular-google-chart/ng-google-chart.js"></script>
 		<script type="application/javascript" src="bower_components/moment/moment.js"></script>
 		<script type="application/javascript" src="bower_components/underscore/underscore.js"></script>
+		<script type="application/javascript" src="bower_components/angular-cas-authenticated-api/dist/cas-authenticated-api.js"></script>
 		<link rel="stylesheet" href="bower_components/bootswatch/superhero/bootstrap.css" />
 
 		<!-- Application CSS -->
@@ -86,6 +87,8 @@
 	<script type="application/javascript" src="app/components/googlechart/region-click.directive.js"></script>
 	<script type="application/javascript" src="app/components/percent.filter.js"></script>
 	<script type="application/javascript" src="app/settings/settings.service.js"></script>
+	<script type="application/javascript" src="app/states/app.controller.js"></script>
+	<script type="application/javascript" src="app/states/dashboard/estimated-toggle.controller.js"></script>
 	<script type="application/javascript" src="app/states/dashboard/countries/countries.controller.js"></script>
 	<script type="application/javascript" src="app/states/dashboard/ministry/ministry.controller.js"></script>
 	<script type="application/javascript" src="app/states/dashboard/ministry/staff-account/staff-account.controller.js"></script>
