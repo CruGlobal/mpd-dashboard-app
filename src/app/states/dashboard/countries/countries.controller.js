@@ -24,7 +24,7 @@
 	}
 
 	CountriesController.prototype.onReady = function ( chartWrapper ) {
-		// This fixes the issue initially, but any region mouseover/click break it.
+		// This fixes the issue initially, but any region mouseover /click break it.
 
 		// Fixes issue with gradients and HTML <base> tag
 		// @see https://github.com/google/google-visualization-issues/issues/2000
@@ -49,9 +49,11 @@
 	};
 
 	CountriesController.prototype.onRegionClick = function ( region ) {
-		var country = _.findWhere( this.countries, {iso_code: region} );
+		var country = _.filter( this.countries, function ( obj ) {
+			return obj.attributes.iso_code === region;
+		} ).pop();
 		if ( angular.isDefined( country ) ) {
-			this.$state.go( 'ministry', {min_code: country.min_code} );
+			this.$state.go( 'country', {id: country.id} );
 		}
 	};
 

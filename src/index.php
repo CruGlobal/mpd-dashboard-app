@@ -27,7 +27,7 @@
 		<script type="application/javascript" src="bower_components/angular-google-chart/ng-google-chart.js"></script>
 		<script type="application/javascript" src="bower_components/moment/moment.js"></script>
 		<script type="application/javascript" src="bower_components/underscore/underscore.js"></script>
-		<script type="application/javascript" src="bower_components/angular-cas-authenticated-api/dist/cas-authenticated-api.js"></script>
+		<script type="application/javascript" src="bower_components/angular-cas-auth-api/dist/cas-auth-api.js"></script>
 		<link rel="stylesheet" href="bower_components/bootswatch/superhero/bootstrap.css" />
 
 		<!-- Application CSS -->
@@ -77,12 +77,11 @@
 	<script type="application/javascript" src="app/states/app.state.js"></script>
 	<script type="application/javascript" src="app/states/dashboard/dashboard.state.js"></script>
 	<script type="application/javascript" src="app/states/dashboard/countries/countries.state.js"></script>
-	<script type="application/javascript" src="app/states/dashboard/ministry/ministry.state.js"></script>
-	<script type="application/javascript" src="app/states/dashboard/ministry/staff-account/staff-account.state.js"></script>
+	<script type="application/javascript" src="app/states/dashboard/country/country.state.js"></script>
+	<script type="application/javascript" src="app/states/dashboard/staff-account/staff-account.state.js"></script>
 
 	<script type="application/javascript" src="app/api/countries.service.js"></script>
-	<script type="application/javascript" src="app/api/ministry.service.js"></script>
-	<script type="application/javascript" src="app/api/staff-account.service.js"></script>
+	<script type="application/javascript" src="app/api/staff.service.js"></script>
 	<script type="application/javascript" src="app/app.config.js"></script>
 	<script type="application/javascript" src="app/components/googlechart/region-click.directive.js"></script>
 	<script type="application/javascript" src="app/components/percent.filter.js"></script>
@@ -90,8 +89,8 @@
 	<script type="application/javascript" src="app/states/app.controller.js"></script>
 	<script type="application/javascript" src="app/states/dashboard/estimated-toggle.controller.js"></script>
 	<script type="application/javascript" src="app/states/dashboard/countries/countries.controller.js"></script>
-	<script type="application/javascript" src="app/states/dashboard/ministry/ministry.controller.js"></script>
-	<script type="application/javascript" src="app/states/dashboard/ministry/staff-account/staff-account.controller.js"></script>
+	<script type="application/javascript" src="app/states/dashboard/country/country.controller.js"></script>
+	<script type="application/javascript" src="app/states/dashboard/staff-account/staff-account.controller.js"></script>
 	<!-- endbuild -->
 
 	</body>

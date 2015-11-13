@@ -12,6 +12,14 @@
 			return config.environment === 'development';
 		};
 
+		this.casAuthApiBaseUrl = function() {
+			return config.api.casAuthApi;
+		};
+
+		this.ticketUrl = function() {
+			return config.api.refresh;
+		};
+
 		function apiUrl( base, path ) {
 			if ( typeof path === 'undefined' ) return base;
 			return ( path.indexOf( '/' ) === 0 )
@@ -21,12 +29,11 @@
 
 		this.$get = function () {
 			return {
-				api:    {
-					measurements: function ( path ) {
-						return apiUrl( config.api.measurements, path );
+				api: {
+					mpdDashboard: function ( path ) {
+						return apiUrl( config.api.mpdDashboard, path );
 					}
-				},
-				ticket: config.ticket
+				}
 			};
 		}
 	} );

@@ -16,7 +16,7 @@
 					<div class="color4"><!-- <50% --></div>
 					<div class="color5"><!-- No Budget --></div>
 				</div>
-				<div google-chart chart="ministry.mpdHealth" agc-on-select="ministry.onMpdHealthSelect(selectedItem)" style="width: 100%; height:300px;"></div>
+				<div google-chart chart="country.mpdHealth" agc-on-select="country.onMpdHealthSelect(selectedItem)" style="width: 100%; height:300px;"></div>
 			</div>
 		</div>
 		<div>
@@ -32,14 +32,14 @@
 					<div class="color1"><!-- Average Support Level --></div>
 					<div class="color2"><!-- Staff with more than 90% --></div>
 				</div>
-				<div google-chart chart="ministry.supportTrend" style="width: 100%; height:300px;"></div>
+				<div google-chart chart="country.supportTrend" style="width: 100%; height:300px;"></div>
 			</div>
 		</div>
 	</div>
 	<div class="col-sm-5">
 		<div>
 			<div class="dashboard-well">
-				<table class="table table-ministry">
+				<table class="table table-country">
 					<tbody>
 					<tr>
 						<td>Average Support</td>
@@ -55,11 +55,11 @@
 				</table>
 			</div>
 		</div>
-		<div ng-if="ministry.staff">
+		<div ng-if="country.staff">
 			<nav class="navbar navbar-inverse navbar-section">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						<span class="navbar-brand">Staff with {{ministry.staffHeading}} MPD</span>
+						<span class="navbar-brand">Staff with {{country.staffHeading}} MPD</span>
 					</div>
 				</div>
 			</nav>
@@ -71,7 +71,7 @@
 					</tr>
 					</thead>
 					<tbody>
-					<tr ng-repeat="staff in ministry.staff | orderBy:'name'" ng-click="ministry.$state.go('staffAccount', {person_id: staff.person_id})">
+					<tr ng-repeat="staff in country.staff | orderBy:'name'" ng-click="country.$state.go('staffAccount', {id: staff.person_id})">
 						<td>{{staff.name}}</td>
 					</tr>
 					</tbody>

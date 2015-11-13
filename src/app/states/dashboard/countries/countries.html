@@ -42,16 +42,16 @@
 				</tr>
 				</thead>
 				<tbody>
-				<tr ng-repeat="country in countries.countries | orderBy:'name'" ng-click="countries.$state.go('ministry', {min_code: country.min_code})">
-					<td>{{country.name}}</td>
-					<td>{{country.mpd_level | percent}}</td>
-					<td>{{country.staff_with_budget | percent}}</td>
-					<td>{{country.staff_raised[0] | percent}}</td>
-					<td>{{country.staff_raised[1] | percent}}</td>
-					<td>{{country.staff_raised[2] | percent}}</td>
-					<td>{{country.staff_raised[3] | percent}}</td>
-					<td>{{country.budget_spent | percent}}</td>
-					<td>{{country.raised_locally | percent}}</td>
+				<tr ng-repeat="country in countries.countries | orderBy:'attributes.name'" ng-click="countries.$state.go('country', {id: country.id})">
+					<td>{{country.attributes.name}}</td>
+					<td>{{country.attributes.mpd_level | percent}}</td>
+					<td>{{country.attributes.staff_with_budget | percent}}</td>
+					<td>{{country.attributes.staff_raised[0] | percent}}</td>
+					<td>{{country.attributes.staff_raised[1] | percent}}</td>
+					<td>{{country.attributes.staff_raised[2] | percent}}</td>
+					<td>{{country.attributes.staff_raised[3] | percent}}</td>
+					<td>{{country.attributes.budget_spent | percent}}</td>
+					<td>{{country.attributes.raised_locally | percent}}</td>
 				</tr>
 				</tbody>
 			</table>

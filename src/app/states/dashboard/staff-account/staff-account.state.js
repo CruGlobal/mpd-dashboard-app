@@ -4,16 +4,19 @@
 	module.config( function ( $stateProvider ) {
 
 		$stateProvider.state( 'staffAccount', {
-			parent:  'ministry',
-			url:     '/{person_id}',
+			parent:  'dashboard',
+			url:     'staff/{id}',
 			resolve: {
-				'account':             function ( $stateParams, ministry, StaffAccount ) {
-					return StaffAccount.get();
+				'account':             function ( $stateParams, Staff, estimated ) {
+					return Staff.get( estimated.estimated ? {
+						id:        $stateParams.id,
+						estimated: true
+					} : {id: $stateParams.id} ).$promise;
 				},
 				'budgetTrendData':     function ( $window, $q, googleChartApiPromise, account ) {
 					var deferred = $q.defer();
 					googleChartApiPromise.then( function () {
-						var budget_trend = _.map( account.budget_trend, function ( data ) {
+						var budget_trend = _.map( account.attributes.budget_trend, function ( data ) {
 							data[0] = new Date( data[0] );
 							return data;
 						} );
@@ -33,12 +36,12 @@
 					return deferred.promise;
 				},
 				'incomeBreakdownData': function ( account ) {
-					return [['Income Type', 'Amount']].concat( account.income );
+					return [['Income Type', 'Amount']].concat( account.attributes.income );
 				}
 			},
 			views:   {
 				'@app': {
-					templateUrl: 'app/states/dashboard/ministry/staff-account/staff-account.html',
+					templateUrl: 'app/states/dashboard/staff-account/staff-account.html',
 					controller:  'StaffAccountController as staffAccountCtrl'
 				}
 			}
@@ -46,7 +49,7 @@
 	} );
 
 })( angular
-	.module( 'mpdDashboard.states.dashboard.ministry.staffAccount', [
+	.module( 'mpdDashboard.states.dashboard.staffAccount', [
 		// Dependencies
 		'ui.router',
 		'angular-growl',
@@ -54,8 +57,8 @@
 		'mpdDashboard.components.percent',
 
 		// API
-		'mpdDashboard.api.staffAccount',
+		'mpdDashboard.api.staff',
 
 		// Dependent States
-		'mpdDashboard.states.dashboard.ministry'
+		'mpdDashboard.states.dashboard.country'
 	] ) );

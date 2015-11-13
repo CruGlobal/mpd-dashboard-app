@@ -7,16 +7,16 @@
 			parent:  'dashboard',
 			url:     'countries',
 			resolve: {
-				'countries': function ( $log, Countries ) {
-					return Countries.get();
+				'countries': function ( $log, Countries, estimated ) {
+					return Countries.query( estimated.estimated ? {estimated: true} : {} ).$promise;
 				},
-				'geodata':   function ( $log, countries ) {
-					var data       = _.reject( countries, function ( obj ) {
+				'geodata':   function ( $log, $filter, countries ) {
+					var data       = _.reject( _.pluck( countries, 'attributes' ), function ( obj ) {
 							return angular.isUndefined( obj.iso_code ) || _.isNull( obj.iso_code ) || obj.iso_code === '';
 						} ),
 						iso_codes  = ['Country'].concat( _.pluck( data, 'iso_code' ) ),
 						mpd_levels = ['MPD Level'].concat( _.map( _.pluck( data, 'mpd_level' ), function ( num ) {
-							return num * 100
+							return $filter( 'percent' )( num, 2, false );
 						} ) );
 					return _.zip( iso_codes, mpd_levels );
 				}
@@ -44,5 +44,5 @@
 
 		// Dependent States
 		'mpdDashboard.states.dashboard',
-		'mpdDashboard.states.dashboard.ministry'
+		'mpdDashboard.states.dashboard.country'
 	] ) );

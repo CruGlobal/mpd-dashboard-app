@@ -3,27 +3,30 @@
 
 	module.config( function ( $stateProvider ) {
 
-		$stateProvider.state( 'ministry', {
+		$stateProvider.state( 'country', {
 			parent:  'dashboard',
-			url:     'ministry/{min_code}',
+			url:     'country/{id}',
 			resolve: {
-				'ministry':         function ( $stateParams, Ministry ) {
-					return Ministry.get();
+				'country':         function ( $stateParams, Countries, estimated ) {
+					return Countries.get( estimated.estimated ? {
+						id:        $stateParams.id,
+						estimated: true
+					} : {id: $stateParams.id} ).$promise;
 				},
-				'mpdHealthData':    function ( ministry ) {
+				'mpdHealthData':    function ( country ) {
 					return [
 						['Support Level', 'Percentage Raised'],
-						['> 100%', ministry.mpd_health[0].length],
-						['80 - 100%', ministry.mpd_health[1].length],
-						['50 - 80%', ministry.mpd_health[2].length],
-						['< 50%', ministry.mpd_health[3].length],
-						['No Budget', ministry.mpd_health[4].length]
+						['> 100%', country.attributes.mpd_health[0].length],
+						['80 - 100%', country.attributes.mpd_health[1].length],
+						['50 - 80%', country.attributes.mpd_health[2].length],
+						['< 50%', country.attributes.mpd_health[3].length],
+						['No Budget', country.attributes.mpd_health[4].length]
 					];
 				},
-				'supportTrendData': function ( $window, $q, googleChartApiPromise, ministry ) {
+				'supportTrendData': function ( $window, $q, googleChartApiPromise, country ) {
 					var deferred = $q.defer();
 					googleChartApiPromise.then( function () {
-						var average_support = _.map( ministry.average_support, function ( data ) {
+						var average_support = _.map( country.attributes.average_support, function ( data ) {
 							data[0] = new Date( data[0] );
 							return data;
 						} );
@@ -52,13 +55,13 @@
 			},
 			views:   {
 				'@app':      {
-					templateUrl: 'app/states/dashboard/ministry/ministry.html',
-					controller:  'MinistryController as ministry'
+					templateUrl: 'app/states/dashboard/country/country.html',
+					controller:  'CountryController as country'
 				},
 				'title@app': {
 					template:   '<span>{{name}}</span>',
-					controller: function ( $scope, ministry ) {
-						$scope.name = ministry.name;
+					controller: function ( $scope, country ) {
+						$scope.name = country.name;
 					}
 				}
 			}
@@ -66,7 +69,7 @@
 	} );
 
 })( angular
-	.module( 'mpdDashboard.states.dashboard.ministry', [
+	.module( 'mpdDashboard.states.dashboard.country', [
 		// Dependencies
 		'ui.router',
 		'angular-growl',
@@ -74,9 +77,9 @@
 		'mpdDashboard.components.percent',
 
 		// API
-		'mpdDashboard.api.ministry',
+		'mpdDashboard.api.countries',
 
 		// Dependent States
 		'mpdDashboard.states.dashboard',
-		'mpdDashboard.states.dashboard.ministry.staffAccount'
+		'mpdDashboard.states.dashboard.staffAccount'
 	] ) );

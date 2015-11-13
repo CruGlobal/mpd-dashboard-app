@@ -55,10 +55,18 @@
 	),
 
 	/**
-	 * Measurements API
+	 * Rails CAS Auth API
 	 */
-	'measurements' => array(
+	'cas-auth-api' => array(
 		/** @var string API endpoint, no training slash */
-		'endpoint'  => 'https://measurements.global-registry.org/v4',
+		'endpoint' => ''
+	),
+
+	/**
+	 * MPD Dashboard API
+	 */
+	'mpd-dashboard' => array(
+		/** @var string API endpoint, no training slash */
+		'endpoint'  => '',
 	),
 );

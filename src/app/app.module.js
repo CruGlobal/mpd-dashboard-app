@@ -6,7 +6,7 @@
 		'gettext',
 		'ui.router',
 		'angular-growl',
-		'cas-authenticated-api',
+		'cas-auth-api',
 		'mpdDashboard.settingsService',
 //		'mpdCalculator.api.measurements',
 

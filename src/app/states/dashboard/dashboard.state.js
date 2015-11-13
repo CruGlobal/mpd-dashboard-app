@@ -9,7 +9,7 @@
 			url:      '?estimated',
 			resolve:  {
 				'estimated': function ( $stateParams ) {
-					return {estimated: true};
+					return {estimated: $stateParams.estimated === 'false' ? false : true};
 				}
 			},
 			views:    {
@@ -23,6 +23,12 @@
 					templateUrl: 'app/states/dashboard/estimated-toggle.html',
 					controller:  'EstimatedToggleController as toggle'
 				}
+			},
+			params:   {
+				estimated: {
+					value:  'false',
+					squash: true
+				}
 			}
 		} );
 	} );
@@ -32,6 +38,7 @@
 		// Dependencies
 		'ui.router',
 		'angular-growl',
+		'ui.bootstrap.buttons',
 
 		// Dependent States
 		'mpdDashboard.states.app'

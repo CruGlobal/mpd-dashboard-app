@@ -23,7 +23,7 @@
     "underscore": "~1",
     "SpinKit": "spinkit#~1.2.2",
     "angular-google-chart": "0.1.0-beta.2",
-    "angular-cas-authenticated-api": "git@github.com:CruGlobal/angular-cas-authenticated-api.git#staging"
+    "angular-cas-auth-api": "git@github.com:CruGlobal/angular-cas-auth-api.git#staging"
   },
   "ignore": [
     "**/.*",

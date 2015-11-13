@@ -1,7 +1,7 @@
 (function ( module ) {
 	'use strict';
 
-	function StaffAccountController( $log, $window, $state, ministry, account, budgetTrendData, incomeBreakdownData ) {
+	function StaffAccountController( $log, $window, $state, account, budgetTrendData, incomeBreakdownData ) {
 		var budgetTrendDiv        = $window.jQuery( '.budget-trend' ),
 			incomeBreakdownDiv    = $window.jQuery( '.income-breakdown' ),
 			backgroundColor       = budgetTrendDiv.css( 'backgroundColor' ),
@@ -20,8 +20,8 @@
 			];
 
 		this.$state = $state;
-		this.mpdAnalysis = account.mpd_analysis;
-		this.averageSupport = account.average_support;
+		this.mpdAnalysis = account.attributes.mpd_analysis;
+		this.averageSupport = account.attributes.average_support;
 
 		this.budgetTrend = {
 			type:    'LineChart',
@@ -104,4 +104,4 @@
 
 	module.controller( 'StaffAccountController', StaffAccountController );
 
-})( angular.module( 'mpdDashboard.states.dashboard.ministry.staffAccount' ) );
+})( angular.module( 'mpdDashboard.states.dashboard.staffAccount' ) );
