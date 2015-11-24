@@ -7,23 +7,8 @@
 		$stateProvider.state( 'app', {
 			abstract:    true,
 			url:         '/',
-			resolve:     {
-				/*
-				 'session':    function ( $log, Session ) {
-				 return Session.getSession();
-				 },
-				 'user':       function ( $log, $q, session ) {
-				 var deferred = $q.defer();
-				 deferred.resolve( session.user );
-				 return deferred.promise;
-				 },
-				 'ministries': function ( $log, session, Ministries ) {
-				 return Ministries.whq().$promise;
-				 }
-				 */
-			},
-			templateUrl: 'app/states/app.html',
-			controller:  'ApplicationController as app'
+			templateUrl: 'app/states/app.html'
+			//controller:  'ApplicationController as app'
 		} );
 	} );
 
@@ -33,5 +18,8 @@
 		'ui.router',
 		'angular-growl',
 		'ui.bootstrap.collapse',
-		'ui.bootstrap.dropdown'
+		'ui.bootstrap.dropdown',
+
+		// States
+		'mpdDashboard.states.unauthorized'
 	] ) );

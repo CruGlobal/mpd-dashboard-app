@@ -7,10 +7,16 @@
 			parent:  'dashboard',
 			url:     'countries',
 			resolve: {
-				'countries': function ( $log, Countries, estimated ) {
+				'hasCountries': function ( $state, permissions ) {
+					if ( permissions.countries.length === 0 ) {
+						$state.go( 'unauthorized' );
+					}
+					return permissions.countries;
+				},
+				'countries':    function ( $log, Countries, estimated, hasCountries ) {
 					return Countries.query( estimated.estimated ? {estimated: true} : {} ).$promise;
 				},
-				'geodata':   function ( $log, $filter, countries ) {
+				'geodata':      function ( $log, $filter, countries ) {
 					var data       = _.reject( _.pluck( countries, 'attributes' ), function ( obj ) {
 							return angular.isUndefined( obj.iso_code ) || _.isNull( obj.iso_code ) || obj.iso_code === '';
 						} ),
@@ -44,5 +50,6 @@
 
 		// Dependent States
 		'mpdDashboard.states.dashboard',
-		'mpdDashboard.states.dashboard.country'
+		'mpdDashboard.states.dashboard.country',
+		'mpdDashboard.states.unauthorized'
 	] ) );

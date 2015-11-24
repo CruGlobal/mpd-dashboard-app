@@ -83,15 +83,17 @@
 
 	<script type="application/javascript" src="app/api/countries.service.js"></script>
 	<script type="application/javascript" src="app/api/staff.service.js"></script>
+	<script type="application/javascript" src="app/api/user.service.js"></script>
 	<script type="application/javascript" src="app/app.config.js"></script>
 	<script type="application/javascript" src="app/components/googlechart/region-click.directive.js"></script>
 	<script type="application/javascript" src="app/components/percent.filter.js"></script>
 	<script type="application/javascript" src="app/settings/settings.service.js"></script>
-	<script type="application/javascript" src="app/states/app.controller.js"></script>
 	<script type="application/javascript" src="app/states/dashboard/estimated-toggle.controller.js"></script>
 	<script type="application/javascript" src="app/states/dashboard/countries/countries.controller.js"></script>
 	<script type="application/javascript" src="app/states/dashboard/country/country.controller.js"></script>
+	<script type="application/javascript" src="app/states/dashboard/navigation.controller.js"></script>
 	<script type="application/javascript" src="app/states/dashboard/staff-account/staff-account.controller.js"></script>
+	<script type="application/javascript" src="app/states/unauthorized/unauthorized.state.js"></script>
 	<!-- endbuild -->
 
 	</body>

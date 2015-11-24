@@ -14,21 +14,7 @@
 			<div class="navbar-collapse collapse" uib-collapse="navCollapsed">
 				<p class="navbar-text" ui-view="title"></p>
 
-				<ul class="nav navbar-nav">
-					<li ng-if="app.navigation.countries" ui-sref-active="active">
-						<a href ui-sref="countries" translate>Countries</a>
-					</li>
-					<li class="dropdown" ng-if="app.navigation.staff_accounts" uib-dropdown>
-						<a href class="dropdown-toggle" role="button" aria-expanded="false" uib-dropdown-toggle>
-							<translate>Staff Account</translate>
-							<span class="caret"></span></a>
-						<ul class="dropdown-menu uib-dropdown-menu" role="menu">
-							<li ng-repeat="account in app.navigation.staff_accounts | orderBy:'country'" ui-sref-active="active">
-								<a href ui-sref="staffAccount({min_code: account.min_code, person_id: account.person_id})">{{account.country}}</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
+				<ul class="nav navbar-nav" ui-view="navigation"></ul>
 
 				<div class="navbar-form navbar-right" ui-view="navbarForm"></div>
 			</div>

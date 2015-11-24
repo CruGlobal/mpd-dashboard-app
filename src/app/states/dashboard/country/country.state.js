@@ -7,7 +7,14 @@
 			parent:  'dashboard',
 			url:     'country/{id}',
 			resolve: {
-				'country':         function ( $stateParams, Countries, estimated ) {
+				'hasCountry': function ( $state, $stateParams, permissions ) {
+					var country = _.findWhere(permissions.countries, {id: $stateParams.id});
+					if ( angular.isUndefined(country) ) {
+						$state.go( 'unauthorized' );
+					}
+					return country;
+				},
+				'country':         function ( $stateParams, Countries, estimated, hasCountry ) {
 					return Countries.get( estimated.estimated ? {
 						id:        $stateParams.id,
 						estimated: true
@@ -81,5 +88,6 @@
 
 		// Dependent States
 		'mpdDashboard.states.dashboard',
-		'mpdDashboard.states.dashboard.staffAccount'
+		'mpdDashboard.states.dashboard.staffAccount',
+		'mpdDashboard.states.unauthorized'
 	] ) );

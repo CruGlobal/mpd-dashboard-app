@@ -7,7 +7,7 @@
 			parent:  'dashboard',
 			url:     'staff/{id}',
 			resolve: {
-				'account':             function ( $stateParams, Staff, estimated ) {
+				'account':             function ( $stateParams, Staff, estimated, permissions ) {
 					return Staff.get( estimated.estimated ? {
 						id:        $stateParams.id,
 						estimated: true
@@ -60,5 +60,6 @@
 		'mpdDashboard.api.staff',
 
 		// Dependent States
-		'mpdDashboard.states.dashboard.country'
+		'mpdDashboard.states.dashboard.country',
+		'mpdDashboard.states.unauthorized'
 	] ) );

@@ -8,7 +8,24 @@
 			parent:   'app',
 			url:      '?estimated',
 			resolve:  {
-				'estimated': function ( $stateParams ) {
+				'user':        function ( $log, User ) {
+					return User.get().$promise;
+				},
+				'permissions': function ( $q, $state, user ) {
+					var deferred     = $q.defer(),
+						hasCountries = user.permissions.countries.length !== 0,
+						hasAccounts  = user.permissions.accounts.length !== 0;
+
+					if ( hasCountries || hasAccounts ) {
+						deferred.resolve( user.permissions );
+					}
+					else {
+						$state.go( 'unauthorized' );
+						deferred.reject( 'unauthorized' );
+					}
+					return deferred.promise;
+				},
+				'estimated':   function ( $stateParams ) {
 					return {estimated: $stateParams.estimated === 'false' ? false : true};
 				}
 			},
@@ -22,6 +39,10 @@
 				'navbarForm@app': {
 					templateUrl: 'app/states/dashboard/estimated-toggle.html',
 					controller:  'EstimatedToggleController as toggle'
+				},
+				'navigation@app': {
+					templateUrl: 'app/states/dashboard/navigation.html',
+					controller:  'NavigationController as nav'
 				}
 			},
 			params:   {
@@ -39,6 +60,9 @@
 		'ui.router',
 		'angular-growl',
 		'ui.bootstrap.buttons',
+
+		// APIs
+		'mpdDashboard.api.user',
 
 		// Dependent States
 		'mpdDashboard.states.app'
