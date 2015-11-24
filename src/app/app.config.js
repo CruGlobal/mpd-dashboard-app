@@ -19,6 +19,8 @@
 	// Configure Cas Authenticated Api
 	module.config( function ( casAuthApiProvider, SettingsProvider ) {
 		casAuthApiProvider
+			.setRequireAccessToken( true )
+			.setCacheAccessToken( true )
 			.setAuthenticationApiBaseUrl( SettingsProvider.casAuthApiBaseUrl() )
 			.setTicketUrl( SettingsProvider.ticketUrl() );
 	} );
@@ -31,7 +33,7 @@
 	} );
 
 	// Register managed API with casAuthApi
-	module.run( function( casAuthApi, Settings ) {
+	module.run( function ( casAuthApi, Settings ) {
 		casAuthApi.addManagedApi( Settings.api.mpdDashboard() );
 	} );
 

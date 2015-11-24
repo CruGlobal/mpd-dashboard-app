@@ -27,6 +27,7 @@
 		<script type="application/javascript" src="bower_components/angular-google-chart/ng-google-chart.js"></script>
 		<script type="application/javascript" src="bower_components/moment/moment.js"></script>
 		<script type="application/javascript" src="bower_components/underscore/underscore.js"></script>
+		<script type="application/javascript" src="bower_components/lscache/lscache.js"></script>
 		<script type="application/javascript" src="bower_components/angular-cas-auth-api/dist/cas-auth-api.js"></script>
 		<link rel="stylesheet" href="bower_components/bootswatch/superhero/bootstrap.css" />
 
