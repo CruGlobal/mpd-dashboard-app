@@ -65,6 +65,7 @@
 		'ui.router',
 		'angular-growl',
 		'googlechart',
+		'ui.bootstrap.dropdown',
 		'mpdDashboard.components.percent',
 
 		// API

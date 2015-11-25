@@ -441,6 +441,10 @@ nav + .dashboard-well {
 .income-breakdown .color5 {
   background-color: #5bc0de;
 }
+.navbar-danger {
+  background-color: #d9534f;
+  margin-bottom: 10px;
+}
 .table.table-mpd-analysis tbody > tr > td {
   vertical-align: middle;
   font-family: inherit;

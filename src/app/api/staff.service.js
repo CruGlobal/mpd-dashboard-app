@@ -38,7 +38,8 @@
 		};
 
 		return $resource( Settings.api.mpdDashboard( '/staff/:id' ), {}, {
-			get: {method: 'GET', interceptor: {response: returnDataAttr}}
+			get: {method: 'GET', interceptor: {response: returnDataAttr}},
+			remove: {method: 'DELETE', interceptor: {response: returnDataAttr}}
 		} );
 	} );
 

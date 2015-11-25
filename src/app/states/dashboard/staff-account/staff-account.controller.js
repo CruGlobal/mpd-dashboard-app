@@ -1,7 +1,7 @@
 (function ( module ) {
 	'use strict';
 
-	function StaffAccountController( $log, $window, $state, account, budgetTrendData, incomeBreakdownData ) {
+	function StaffAccountController( $log, $window, $state, account, budgetTrendData, incomeBreakdownData, Staff ) {
 		var budgetTrendDiv        = $window.jQuery( '.budget-trend' ),
 			incomeBreakdownDiv    = $window.jQuery( '.income-breakdown' ),
 			backgroundColor       = budgetTrendDiv.css( 'backgroundColor' ),
@@ -22,6 +22,7 @@
 		this.$state = $state;
 		this.mpdAnalysis = account.attributes.mpd_analysis;
 		this.averageSupport = account.attributes.average_support;
+		this.incorrect_association = account.attributes.incorrect_association;
 
 		this.budgetTrend = {
 			type:    'LineChart',
@@ -100,6 +101,17 @@
 				]
 			}
 		};
+
+		this.reportIncorrectAssociation = function () {
+			var self = this;
+			Staff
+				.remove( {id: account.id} )
+				.$promise
+				.then( function ( acct ) {
+					self.incorrect_association = true;
+				}, function () {
+				} );
+		}
 	}
 
 	module.controller( 'StaffAccountController', StaffAccountController );
