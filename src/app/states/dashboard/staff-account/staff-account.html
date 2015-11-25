@@ -48,31 +48,6 @@
 				</div>
 			</nav>
 			<div class="dashboard-well">
-				<!--
-							If curBal < 0 Then
-								'negative account balance
-								imgMpdHealth.ImageURL = "/DesktopModules/AgapeConnect/GlobalStatusDashboard/red_light.png"
-								lblMpdHealth.Text = "Account balance is currently negative"
-							Else
-								If mpdu.AvgIncome12 < -mpdu.AvgExpenses Then
-									'negative tragectory
-									Dim death_date = -CInt((curBal + mpdu.AvgExpenses) / (mpdu.AvgIncome12 + mpdu.AvgExpenses))
-									If death_date < 1 Then
-										imgMpdHealth.ImageURL = "/DesktopModules/AgapeConnect/GlobalStatusDashboard/red_light.png"
-										lblMpdHealth.Text = "This account does not have enough balance to cover 1 months expenses"
-									ElseIf death_date <= 6 Then
-										imgMpdHealth.ImageURL = "/DesktopModules/AgapeConnect/GlobalStatusDashboard/red_light.png"
-										lblMpdHealth.Text = "Our analysis shows that this account will have insufficient funds within " & death_date & " months."
-									ElseIf death_date <= 12 Then
-										imgMpdHealth.ImageURL = "/DesktopModules/AgapeConnect/GlobalStatusDashboard/yellow_light.png"
-										lblMpdHealth.Text = "Our analysis shows that this account will have insufficient funds within " & death_date & " months."
-									End If
-								Else
-									imgMpdHealth.ImageURL = "/DesktopModules/AgapeConnect/GlobalStatusDashboard/green_light.png"
-									lblMpdHealth.Text = "This staff account appears healthy. "
-								End If
-							End If
-				-->
 				<table class="table table-mpd-analysis">
 					<tbody>
 					<tr>
