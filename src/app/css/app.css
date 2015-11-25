@@ -51,6 +51,8 @@
 .pager:after,
 .panel-body:before,
 .panel-body:after,
+.modal-header:before,
+.modal-header:after,
 .modal-footer:before,
 .modal-footer:after {
   content: " ";
@@ -69,6 +71,7 @@
 .navbar-collapse:after,
 .pager:after,
 .panel-body:after,
+.modal-header:after,
 .modal-footer:after {
   clear: both;
 }
@@ -77,17 +80,17 @@
 /*
  *  Usage:
  *
- *    <div class="sk-cube-grid">
- *      <div class="sk-cube sk-cube1"></div>
- *      <div class="sk-cube sk-cube2"></div>
- *      <div class="sk-cube sk-cube3"></div>
- *      <div class="sk-cube sk-cube4"></div>
- *      <div class="sk-cube sk-cube5"></div>
- *      <div class="sk-cube sk-cube6"></div>
- *      <div class="sk-cube sk-cube7"></div>
- *      <div class="sk-cube sk-cube8"></div>
- *      <div class="sk-cube sk-cube9"></div>
- *    </div>
+      <div class="sk-cube-grid">
+        <div class="sk-cube sk-cube1"></div>
+        <div class="sk-cube sk-cube2"></div>
+        <div class="sk-cube sk-cube3"></div>
+        <div class="sk-cube sk-cube4"></div>
+        <div class="sk-cube sk-cube5"></div>
+        <div class="sk-cube sk-cube6"></div>
+        <div class="sk-cube sk-cube7"></div>
+        <div class="sk-cube sk-cube8"></div>
+        <div class="sk-cube sk-cube9"></div>
+      </div>
  *
  */
 .sk-cube-grid {
@@ -101,8 +104,8 @@
    * 7 8 9
    */ }
   .sk-cube-grid .sk-cube {
-    width: 33%;
-    height: 33%;
+    width: 33.33%;
+    height: 33.33%;
     background-color: #333;
     float: left;
     -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
@@ -153,9 +156,9 @@
 
 /* Angular Growl */
 /**
- * angular-growl-v2 - v0.7.4 - 2015-05-26
+ * angular-growl-v2 - v0.7.8 - 2015-10-25
  * http://janstevens.github.io/angular-growl-2
- * Copyright (c) 2015 Marco Rinck,Jan Stevens; Licensed MIT
+ * Copyright (c) 2015 Marco Rinck,Jan Stevens,Silvan van Leeuwen; Licensed MIT
  */
 /*
  *  growl-container styles
@@ -175,12 +178,20 @@
   bottom: 10px;
   right: 15px;
 }
+.growl-container.growl-fixed.middle-right {
+  top: 49%;
+  right: 15px;
+}
 .growl-container.growl-fixed.top-left {
   top: 10px;
   left: 15px;
 }
 .growl-container.growl-fixed.bottom-left {
   bottom: 10px;
+  left: 15px;
+}
+.growl-container.growl-fixed.middle-left {
+  top: 49%;
   left: 15px;
 }
 .growl-container.growl-fixed.top-center {
@@ -190,6 +201,11 @@
 }
 .growl-container.growl-fixed.bottom-center {
   bottom: 10px;
+  left: 50%;
+  margin-left: -200px;
+}
+.growl-container.growl-fixed.middle-center {
+  top: 49%;
   left: 50%;
   margin-left: -200px;
 }
@@ -377,10 +393,10 @@ nav + .dashboard-well {
 .support-trend .chart-colors .color2 {
   background-color: #DF691A;
 }
-.table.table-ministry > tbody > tr td:first-of-type {
+.table.table-country > tbody > tr td:first-of-type {
   white-space: nowrap;
 }
-.table.table-ministry > tbody > tr > td {
+.table.table-country > tbody > tr > td {
   font-family: inherit;
   font-weight: 300;
   line-height: 1.1;
@@ -389,20 +405,20 @@ nav + .dashboard-well {
   margin-bottom: 10.5px;
   font-size: 19px;
 }
-.table.table-ministry > tbody > tr > td small,
-.table.table-ministry > tbody > tr > td .small {
+.table.table-country > tbody > tr > td small,
+.table.table-country > tbody > tr > td .small {
   font-weight: normal;
   line-height: 1;
   color: #EBEBEB;
 }
-.table.table-ministry > tbody > tr > td small,
-.table.table-ministry > tbody > tr > td .small {
+.table.table-country > tbody > tr > td small,
+.table.table-country > tbody > tr > td .small {
   font-size: 75%;
 }
-.table.table-ministry > tbody > tr td + td {
+.table.table-country > tbody > tr td + td {
   font-weight: bold;
 }
-.table.table-ministry > tbody > tr td > small {
+.table.table-country > tbody > tr td > small {
   font-size: 50%;
 }
 .budget-trend .color1,
@@ -424,6 +440,26 @@ nav + .dashboard-well {
 .budget-trend .color5,
 .income-breakdown .color5 {
   background-color: #5bc0de;
+}
+.table.table-mpd-analysis tbody > tr > td {
+  vertical-align: middle;
+  font-family: inherit;
+  font-weight: 300;
+  line-height: 1.1;
+  color: inherit;
+  margin-top: 10.5px;
+  margin-bottom: 10.5px;
+  font-size: 19px;
+}
+.table.table-mpd-analysis tbody > tr > td small,
+.table.table-mpd-analysis tbody > tr > td .small {
+  font-weight: normal;
+  line-height: 1;
+  color: #EBEBEB;
+}
+.table.table-mpd-analysis tbody > tr > td small,
+.table.table-mpd-analysis tbody > tr > td .small {
+  font-size: 75%;
 }
 .table.table-average-support thead > tr > th,
 .table.table-average-support tbody > tr > td {

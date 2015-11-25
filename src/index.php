@@ -23,7 +23,6 @@
 		<script type="application/javascript" src="bower_components/angular-resource/angular-resource.js"></script>
 		<script type="application/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 		<script type="application/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-		<script type="application/javascript" src="bower_components/ngstorage/ngStorage.js"></script>
 		<script type="application/javascript" src="bower_components/angular-google-chart/ng-google-chart.js"></script>
 		<script type="application/javascript" src="bower_components/moment/moment.js"></script>
 		<script type="application/javascript" src="bower_components/underscore/underscore.js"></script>

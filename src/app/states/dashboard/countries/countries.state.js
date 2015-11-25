@@ -13,8 +13,17 @@
 					}
 					return permissions.countries;
 				},
-				'countries':    function ( $log, Countries, estimated, hasCountries ) {
-					return Countries.query( estimated.estimated ? {estimated: true} : {} ).$promise;
+				'countries':    function ( $log, $q, $state, Countries, estimated, hasCountries ) {
+					var deferred = $q.defer();
+					Countries
+						.query( estimated.estimated ? {estimated: true} : {} )
+						.$promise
+						.then( function ( countries ) {
+							deferred.resolve( countries );
+						}, function () {
+							$state.go( 'unauthorized' );
+						} );
+					return deferred.promise;
 				},
 				'geodata':      function ( $log, $filter, countries ) {
 					var data       = _.reject( _.pluck( countries, 'attributes' ), function ( obj ) {

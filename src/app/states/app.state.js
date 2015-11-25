@@ -7,8 +7,12 @@
 		$stateProvider.state( 'app', {
 			abstract:    true,
 			url:         '/',
+			resolve:     {
+				'user': function ( $log, $q, $state, User ) {
+					return User.get().$promise;
+				}
+			},
 			templateUrl: 'app/states/app.html'
-			//controller:  'ApplicationController as app'
 		} );
 	} );
 
@@ -19,6 +23,9 @@
 		'angular-growl',
 		'ui.bootstrap.collapse',
 		'ui.bootstrap.dropdown',
+
+		// APIs
+		'mpdDashboard.api.user',
 
 		// States
 		'mpdDashboard.states.unauthorized'

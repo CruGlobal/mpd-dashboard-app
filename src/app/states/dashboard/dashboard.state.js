@@ -8,9 +8,6 @@
 			parent:   'app',
 			url:      '?estimated',
 			resolve:  {
-				'user':        function ( $log, User ) {
-					return User.get().$promise;
-				},
 				'permissions': function ( $q, $state, user ) {
 					var deferred     = $q.defer(),
 						hasCountries = user.permissions.countries.length !== 0,
@@ -31,7 +28,7 @@
 			},
 			views:    {
 				'footer@app':     {
-					template:   '<div ng-if="estimated.estimated" class="alert alert-estimated">*Based on estimated budget - as no budget has been submitted.</div>',
+					template:   '<div ng-if="estimated.estimated" class="alert alert-estimated">*Based on estimated budget(s)</div>',
 					controller: function ( $scope, estimated ) {
 						$scope.estimated = estimated;
 					}

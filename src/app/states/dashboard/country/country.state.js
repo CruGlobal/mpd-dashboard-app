@@ -5,20 +5,31 @@
 
 		$stateProvider.state( 'country', {
 			parent:  'dashboard',
-			url:     'country/{id}',
+			url:     'country/{id:int}',
 			resolve: {
-				'hasCountry': function ( $state, $stateParams, permissions ) {
-					var country = _.findWhere(permissions.countries, {id: $stateParams.id});
-					if ( angular.isUndefined(country) ) {
+				'hasCountry':       function ( $state, $stateParams, permissions ) {
+					var country = _.findWhere( permissions.countries, {id: $stateParams.id} );
+					if ( angular.isUndefined( country ) ) {
 						$state.go( 'unauthorized' );
 					}
 					return country;
 				},
-				'country':         function ( $stateParams, Countries, estimated, hasCountry ) {
-					return Countries.get( estimated.estimated ? {
-						id:        $stateParams.id,
-						estimated: true
-					} : {id: $stateParams.id} ).$promise;
+				'country':          function ( $q, $state, $stateParams, Countries, estimated, hasCountry ) {
+					var deferred = $q.defer();
+					Countries
+						.get(
+							estimated.estimated ? {
+								id:        $stateParams.id,
+								estimated: true
+							} : {id: $stateParams.id}
+						)
+						.$promise
+						.then( function ( country ) {
+							deferred.resolve( country );
+						}, function () {
+							$state.go( 'unauthorized' );
+						} );
+					return deferred.promise;
 				},
 				'mpdHealthData':    function ( country ) {
 					return [

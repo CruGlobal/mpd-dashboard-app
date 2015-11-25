@@ -5,13 +5,24 @@
 
 		$stateProvider.state( 'staffAccount', {
 			parent:  'dashboard',
-			url:     'staff/{id}',
+			url:     'staff/{id:int}',
 			resolve: {
-				'account':             function ( $stateParams, Staff, estimated, permissions ) {
-					return Staff.get( estimated.estimated ? {
-						id:        $stateParams.id,
-						estimated: true
-					} : {id: $stateParams.id} ).$promise;
+				'account':             function ( $q, $state, $stateParams, Staff, estimated, permissions ) {
+					var deferred = $q.defer();
+					Staff
+						.get(
+							estimated.estimated ? {
+								id:        $stateParams.id,
+								estimated: true
+							} : {id: $stateParams.id}
+						)
+						.$promise
+						.then( function ( account ) {
+							deferred.resolve( account );
+						}, function () {
+							$state.go( 'unauthorized' );
+						} );
+					return deferred.promise;
 				},
 				'budgetTrendData':     function ( $window, $q, googleChartApiPromise, account ) {
 					var deferred = $q.defer();

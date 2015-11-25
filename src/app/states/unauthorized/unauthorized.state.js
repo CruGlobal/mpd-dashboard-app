@@ -37,10 +37,15 @@
 			views:   {
 				'@app': {
 					templateUrl: 'app/states/unauthorized/unauthorized.html',
-					controller:  function ( permissions ) {
+					controller:  function ( $scope, permissions, $stateParams ) {
+						console.log( $stateParams );
 						// require permissions so it gets resolved
+						$scope.message = angular.isDefined( $stateParams.message ) ? $stateParams.message : undefined;
 					}
 				}
+			},
+			params: {
+				message: null
 			}
 		} );
 	} );
