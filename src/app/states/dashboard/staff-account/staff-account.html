@@ -73,34 +73,19 @@
 								End If
 							End If
 				-->
-				<table>
+				<table class="table table-mpd-analysis">
 					<tbody>
-					<tr ng-if="staffAccountCtrl.mpdAnalysis >= 1">
-						<td>
-							<img src="app/img/green_light.png" />
+					<tr>
+						<td ng-switch="staffAccountCtrl.mpdAnalysis.status">
+							<img ng-switch-when="GREEN" src="app/img/green_light.png" />
+							<img ng-switch-when="YELLOW" src="app/img/yellow_light.png" />
+							<img ng-switch-when="RED" src="app/img/red_light.png" />
 						</td>
-						<td>This staff account appears healthy.</td>
-					</tr>
-					<tr ng-if="staffAccountCtrl.mpdAnalysis > 0.5 && staffAccountCtrl.mpdAnalysis < 1">
-						<td>
-							<img src="app/img/yellow_light.png" />
-						</td>
-						<td></td>
-					</tr>
-					<tr ng-if="staffAccountCtrl.mpdAnalysis <= 0.5">
-						<td>
-							<img src="app/img/red_light.png" />
-						</td>
-						<td>
-
-						</td>
-					</tr>
-					<tr ng-if="!staffAccountCtrl.mpdAnalysis">
-						<td>
-							<img src="app/img/grey_light.png" />
-						</td>
-						<td>
-
+						<td ng-switch="staffAccountCtrl.mpdAnalysis.message">
+							<span ng-switch-when="HEALTHY">This staff account appears healthy.</span>
+							<span ng-switch-when="NOT_ENOUGH_MONTHS">Our analysis shows that this account will have insufficient funds within {{staffAccountCtrl.mpdAnalysis.months}} months.</span>
+							<span ng-switch-when="NOT_ENOUGH_MONTH">This account does not have enough balance to cover 1 months expenses.</span>
+							<span ng-switch-when="NEGATIVE_BALANCE">Account balance is currently negative.</span>
 						</td>
 					</tr>
 					</tbody>
