@@ -38,6 +38,12 @@
 	} );
 
 	module.run( function ( $log, $rootScope ) {
+		$rootScope.$on( '$stateChangeStart', function () {
+			angular.element( 'div.loading' ).removeClass( 'hide' );
+		} );
+		$rootScope.$on( '$stateChangeSuccess', function () {
+			angular.element( 'div.loading' ).addClass( 'hide' );
+		} );
 		$rootScope.$on( '$stateChangeError', function ( event, toState, toParams, fromState, fromParams, error ) {
 			$log.error( '$stateChangeError:', toState, toParams, error );
 		} );
