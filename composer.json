@@ -1,6 +1,6 @@
 {
-	"name": "globaltechnology/mpd-calculator-app",
-	"description": "MPD Calculator Application",
+	"name": "globaltechnology/mpd-diashboard-app",
+	"description": "MPD Dashboard Application",
 	"authors": [
 		{
 			"name": "Brian Zoetewey",
@@ -14,7 +14,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"GlobalTechnology\\MPDCalculator\\": "php/"
+			"GlobalTechnology\\MPDDashboard\\": "php/"
 		}
 	}
 }

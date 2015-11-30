@@ -1,4 +1,4 @@
-<?php namespace GlobalTechnology\MPDCalculator {
+<?php namespace GlobalTechnology\MPDDashboard {
 
 	class Config {
 		private static $config = array();

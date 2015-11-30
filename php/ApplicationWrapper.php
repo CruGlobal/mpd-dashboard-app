@@ -1,4 +1,4 @@
-<?php namespace GlobalTechnology\MPDCalculator {
+<?php namespace GlobalTechnology\MPDDashboard {
 
 	// Require phpCAS, composer does not autoload it.
 	require_once( dirname( dirname( __FILE__ ) ) . '/vendor/jasig/phpcas/source/CAS.php' );
@@ -31,6 +31,7 @@
 
 		public $casClient;
 		public $url;
+		public $path;
 
 		/**
 		 * Constructor
@@ -47,6 +48,7 @@
 			if ( isset( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] ) )
 				$url->setScheme( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] );
 			$this->url = $url;
+			$this->path = $this->url->getPath();
 
 			// Initialize phpCAS proxy client
 			$this->casClient = $this->initializeCAS();
@@ -67,7 +69,7 @@
 				$casClient->setPGTStorage( new ProxyTicketServiceStorage( $casClient ) );
 			}
 			else {
-				$casClient->setCallbackURL( $this->url->resolve( 'callback.php' )->getURL() );
+				$casClient->setCallbackURL( $this->url->getURL() . '/callback.php' );
 				$casClient->setPGTStorageFile( session_save_path() );
 				// Handle logout requests but do not validate the server
 				$casClient->handleLogoutRequests( false );
@@ -79,18 +81,8 @@
 			return $casClient;
 		}
 
-		public function getAPIServiceTicket() {
-			return $this->casClient->retrievePT( Config::get( 'measurements.endpoint' ) . '/token', $code, $msg );
-		}
-
-		public function versionUrl( $url ) {
-			$version = Config::get( 'version', false );
-			if ( $version ) {
-				$url = new \Net_URL2( $url );
-				$url->setQueryVariable( 'ver', $version );
-				return $url->getURL();
-			}
-			return $url;
+		public function getAPIServiceTicket( $service = false ) {
+			return $this->casClient->retrievePT( $service ? $service : ( Config::get( 'mpd-dashboard.endpoint' ) . '/token' ), $code, $msg );
 		}
 
 		public function authenticate() {
@@ -101,23 +93,17 @@
 			$this->casClient->logout( array() );
 		}
 
-		public function appDir( $path = '' ) {
-			$url = $this->url->resolve( 'app/' . Config::get( 'application.directory', 'dist' ) . '/' . ltrim( $path, '/' ) );
-			$url->setQueryVariable( 'ver', Config::get( 'version', 'false' ) );
-			return $url->getURL();
-		}
-
 		public function appConfig() {
 			return json_encode( array(
 				'version'     => Config::get( 'application.version', '' ),
 				'environment' => Config::get( 'application.environment', 'production' ),
-				'ticket'      => $this->getAPIServiceTicket(),
-				'appUrl'      => $this->url->resolve( 'app' )->getPath(),
+				'appUrl'      => $this->path . '/app',
 				'api'         => array(
-					'measurements' => Config::get( 'measurements.endpoint' ),
-					'refresh'      => $this->url->resolve( 'refresh.php' )->getPath(),
+					'casAuthApi'   => Config::get( 'cas-auth-api.endpoint' ),
+					'mpdDashboard' => Config::get( 'mpd-dashboard.endpoint' ),
+					'refresh'      => $this->url->getURL() . '/ticket.php',
 					'logout'       => Config::get( 'pgtservice.enabled' )
-						? $this->url->resolve( 'logout.php' )->getPath()
+						? $this->url->getURL() . '/logout.php'
 						: $this->casClient->getServerLogoutURL(),
 					'login'        => $this->casClient->getServerLoginURL(),
 				),

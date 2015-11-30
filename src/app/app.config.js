@@ -8,7 +8,7 @@
 
 	// Initialize Application Settings
 	module.config( function ( SettingsProvider ) {
-		SettingsProvider.setConfig( window.MPDCalculator.config );
+		SettingsProvider.setConfig( window.MPDDashboard.config );
 	} );
 
 	// Configure Debug Logging
@@ -16,9 +16,13 @@
 		$logProvider.debugEnabled( SettingsProvider.isDevelopment() );
 	} );
 
-	// Configure HTTP interceptors
-	module.config( function ( $httpProvider ) {
-		$httpProvider.interceptors.push( 'Session' );
+	// Configure Cas Authenticated Api
+	module.config( function ( casAuthApiProvider, SettingsProvider ) {
+		casAuthApiProvider
+			.setRequireAccessToken( true )
+			.setCacheAccessToken( true )
+			.setAuthenticationApiBaseUrl( SettingsProvider.casAuthApiBaseUrl() )
+			.setTicketUrl( SettingsProvider.ticketUrl() );
 	} );
 
 	// Configure Growl
@@ -28,14 +32,21 @@
 		growlProvider.globalTimeToLive( {success: 10000, error: -1, warning: -1, info: 10000} );
 	} );
 
-	module.config( function ( uiSelectConfig ) {
-		uiSelectConfig.theme = 'bootstrap';
+	// Register managed API with casAuthApi
+	module.run( function ( casAuthApi, Settings ) {
+		casAuthApi.addManagedApi( Settings.api.mpdDashboard() );
 	} );
 
 	module.run( function ( $log, $rootScope ) {
+		$rootScope.$on( '$stateChangeStart', function () {
+			angular.element( 'div.loading' ).removeClass( 'hide' );
+		} );
+		$rootScope.$on( '$stateChangeSuccess', function () {
+			angular.element( 'div.loading' ).addClass( 'hide' );
+		} );
 		$rootScope.$on( '$stateChangeError', function ( event, toState, toParams, fromState, fromParams, error ) {
 			$log.error( '$stateChangeError:', toState, toParams, error );
 		} );
 	} );
 
-})( angular.module( 'mpdCalculator' ) );
+})( angular.module( 'mpdDashboard' ) );
