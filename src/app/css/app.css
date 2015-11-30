@@ -297,6 +297,12 @@ body {
 .navbar-brand {
   font-size: 24px;
 }
+.navbar-text {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 7px;
+  margin-bottom: 0;
+}
 .sk-container {
   display: flex;
   align-items: center;

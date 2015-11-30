@@ -79,7 +79,7 @@
 				'title@app': {
 					template:   '<span>{{name}}</span>',
 					controller: function ( $scope, country ) {
-						$scope.name = country.name;
+						$scope.name = country.attributes.name;
 					}
 				}
 			}

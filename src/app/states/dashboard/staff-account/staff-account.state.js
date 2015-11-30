@@ -54,6 +54,12 @@
 				'@app': {
 					templateUrl: 'app/states/dashboard/staff-account/staff-account.html',
 					controller:  'StaffAccountController as staffAccountCtrl'
+				},
+				'title@app': {
+					template:   '<span>{{name}}</span>',
+					controller: function ( $scope, account ) {
+						$scope.name = account.attributes.name;
+					}
 				}
 			}
 		} );
