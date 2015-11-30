@@ -140,7 +140,7 @@ gulp.task( 'scripts', ['clean'], function () {
 		.pipe( sourcemaps.init() )
 		.pipe( concat( 'app.min.js' ) )
 		.pipe( ngAnnotate() )
-		.pipe( uglify() )
+//		.pipe( uglify() )
 		.pipe( revisionMap() )
 		.pipe( sourcemaps.write( '.' ) )
 		.pipe( gulp.dest( 'dist/js' ) );

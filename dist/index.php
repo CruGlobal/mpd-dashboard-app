@@ -29,7 +29,7 @@
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.5/superhero/bootstrap.min.css" />
 
 		<!-- Application CSS -->
-		<link rel="stylesheet" href="css/styles.min.css?rev=e5ebae2b">
+		<link rel="stylesheet" href="css/styles.min.css?rev=391c5b8a">
 
 		<script src="js/library.min.js?rev=1ff8f699"></script>
 	</head>
@@ -63,7 +63,7 @@
 	</div>
 
 	<!-- Application JavaScript -->
-	<script src="js/app.min.js?rev=f4a75071"></script>
+	<script src="js/app.min.js?rev=80d6b772"></script>
 	<script src="js/templates.min.js?rev=04b53644"></script>
 
 	</body>
