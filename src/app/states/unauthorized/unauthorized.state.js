@@ -10,8 +10,8 @@
 				'permissions': function ( $q, $state, User ) {
 					var deferred = $q.defer();
 					User.get().$promise.then( function ( user ) {
-						var countries = _.sortBy( user.permissions.countries, 'name' ),
-							accounts  = _.sortBy( user.permissions.accounts, 'name' );
+						var countries = _.sortBy( user.attributes.permissions.countries, 'name' ),
+							accounts  = _.sortBy( user.attributes.permissions.accounts, 'name' );
 						if ( countries.length === 0 && accounts.length === 0 ) {
 							deferred.resolve( true );
 						}

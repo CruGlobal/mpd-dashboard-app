@@ -10,11 +10,11 @@
 			resolve:  {
 				'permissions': function ( $q, $state, user ) {
 					var deferred     = $q.defer(),
-						hasCountries = user.permissions.countries.length !== 0,
-						hasAccounts  = user.permissions.accounts.length !== 0;
+						hasCountries = user.attributes.permissions.countries.length !== 0,
+						hasAccounts  = user.attributes.permissions.accounts.length !== 0;
 
 					if ( hasCountries || hasAccounts ) {
-						deferred.resolve( user.permissions );
+						deferred.resolve( user.attributes.permissions );
 					}
 					else {
 						$state.go( 'unauthorized' );
