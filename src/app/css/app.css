@@ -503,3 +503,75 @@ nav + .dashboard-well {
 .table.table-country > tbody > tr td > small {
   font-size: 50%;
 }
+.budget-trend .color1,
+.income-breakdown .color1 {
+  background-color: #5cb85c;
+}
+.budget-trend .color2,
+.income-breakdown .color2 {
+  background-color: #DF691A;
+}
+.budget-trend .color3,
+.income-breakdown .color3 {
+  background-color: #f0ad4e;
+}
+.budget-trend .color4,
+.income-breakdown .color4 {
+  background-color: #d9534f;
+}
+.budget-trend .color5,
+.income-breakdown .color5 {
+  background-color: #5bc0de;
+}
+.navbar-danger {
+  background-color: #d9534f;
+  margin-bottom: 10px;
+}
+.table.table-mpd-analysis tbody > tr > td {
+  vertical-align: middle;
+  font-family: inherit;
+  font-weight: 300;
+  line-height: 1.1;
+  color: inherit;
+  margin-top: 10.5px;
+  margin-bottom: 10.5px;
+  font-size: 19px;
+}
+.table.table-mpd-analysis tbody > tr > td small,
+.table.table-mpd-analysis tbody > tr > td .small {
+  font-weight: normal;
+  line-height: 1;
+  color: #EBEBEB;
+}
+.table.table-mpd-analysis tbody > tr > td small,
+.table.table-mpd-analysis tbody > tr > td .small {
+  font-size: 75%;
+}
+.table.table-average-support thead > tr > th,
+.table.table-average-support tbody > tr > td {
+  font-family: inherit;
+  font-weight: 300;
+  line-height: 1.1;
+  color: inherit;
+  margin-top: 10.5px;
+  margin-bottom: 10.5px;
+  font-size: 19px;
+}
+.table.table-average-support thead > tr > th small,
+.table.table-average-support tbody > tr > td small,
+.table.table-average-support thead > tr > th .small,
+.table.table-average-support tbody > tr > td .small {
+  font-weight: normal;
+  line-height: 1;
+  color: #EBEBEB;
+}
+.table.table-average-support thead > tr > th small,
+.table.table-average-support tbody > tr > td small,
+.table.table-average-support thead > tr > th .small,
+.table.table-average-support tbody > tr > td .small {
+  font-size: 75%;
+}
+.table.table-average-support thead > tr > th,
+.table.table-average-support tbody > tr > td + td {
+  font-weight: bold;
+}
