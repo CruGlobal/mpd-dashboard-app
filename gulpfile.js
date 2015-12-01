@@ -179,7 +179,7 @@ gulp.task( 'partials', ['clean'], function () {
 		.pipe( gulp.dest( 'dist/js' ) );
 } );
 
-gulp.task( 'styles', ['clean'], function () {
+gulp.task( 'styles', ['clean', 'less'], function () {
 	return gulp.src( ['src/app/**/*.css'] )
 		.pipe( concat( 'styles.min.css' ) )
 		.pipe( minifyCSS() )
@@ -189,7 +189,7 @@ gulp.task( 'styles', ['clean'], function () {
 
 gulp.task( 'images', ['clean'], function () {
 	return gulp.src( ['src/app/img/**/*.png'] )
-		.pipe( gulp.dest( 'dist/img' ) );
+		.pipe( gulp.dest( 'dist/app/img' ) );
 } );
 
 gulp.task( 'htaccess', ['clean'], function () {
