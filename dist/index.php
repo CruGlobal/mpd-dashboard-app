@@ -29,7 +29,7 @@
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.5/superhero/bootstrap.min.css" />
 
 		<!-- Application CSS -->
-		<link rel="stylesheet" href="css/styles.min.css?rev=391c5b8a">
+		<link rel="stylesheet" href="css/styles.min.css?rev=e5ebae2b">
 
 		<script src="js/library.min.js?rev=1ff8f699"></script>
 	</head>

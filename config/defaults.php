@@ -6,7 +6,7 @@
 		/**
 		 * Application version
 		 */
-		'version'      => '1.0.1',
+		'version'      => '1.0.2',
 
 		/**
 		 * Application directory
