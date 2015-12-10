@@ -1,72 +1,81 @@
-<?php return array(
+<?php namespace GlobalTechnology\MPDDashboard {
 	/**
-	 * Application Settings
-	 */
-	'application'  => array(
-		/**
-		 * Application version
-		 */
-		'version'      => '1.0.2',
-
-		/**
-		 * Application directory
-		 *
-		 * Location where where index.html, javascript, styles should be loaded from.
-		 * Valid values (dist, src)
-		 */
-		'directory'   => 'dist',
-
-		/**
-		 * Application Environment
-		 *
-		 * Valid values (production, stage, development)
-		 */
-		'environment' => 'production',
-	),
-
-	/**
-	 * Proxy Granting Ticket Service
+	 * @param string $var
+	 * @param mixed  $default
 	 *
-	 * Enable this to use the php wrapper on localhost.
+	 * @return string
 	 */
-	'pgtservice'   => array(
-		/** @var bool Enable PGT Service */
-		'enabled'  => false,
-		/** @var string PGT Service proxy callback URL */
-		'callback' => 'https://agapeconnect.me/casLogin.aspx',
-		/** @var string PGT Service endpoint URL */
-		'endpoint' => 'https://agapeconnect.me/DesktopModules/AgapeConnect/casauth/pgtcallback.asmx/RetrievePGTCallback',
-		/** @var string PGT Service Username */
-		'username' => '',
-		/** @var string PGT Service Password */
-		'password' => '',
-	),
+	function ENV( $var, $default = '' ) {
+		return $_SERVER[ $var ] ?: $default;
+	}
 
-	/**
-	 * CAS Settings
-	 */
-	'cas'          => array(
-		/** @var string CAS hostname */
-		'hostname' => 'thekey.me',
-		/** @var int CAS port */
-		'port'     => 443,
-		/** @var string CAS context */
-		'context'  => 'cas',
-	),
+	return array(
+		/**
+		 * Application Settings
+		 */
+		'application'   => array(
+			/**
+			 * Application version
+			 */
+			'version'      => '1.0.2',
 
-	/**
-	 * Rails CAS Auth API
-	 */
-	'cas-auth-api' => array(
-		/** @var string API endpoint, no training slash */
-		'endpoint' => ''
-	),
+			/**
+			 * Project Name
+			 */
+			'project_name' => ENV( 'PROJECT_NAME', '' ),
 
-	/**
-	 * MPD Dashboard API
-	 */
-	'mpd-dashboard' => array(
-		/** @var string API endpoint, no training slash */
-		'endpoint'  => '',
-	),
-);
+			/**
+			 * Application Environment
+			 *
+			 * Valid values (production, staging, development)
+			 */
+			'environment'  => ENV( 'ENVIRONMENT', 'production' ),
+		),
+
+		/**
+		 * Proxy Granting Ticket Service
+		 *
+		 * Enable this to use the php wrapper on localhost.
+		 */
+		'pgtservice'    => array(
+			/** @var bool Enable PGT Service */
+			'enabled'  => ENV( 'PGTSERVICE_ENABLED', false ),
+			/** @var string PGT Service proxy callback URL */
+			'callback' => ENV( 'PGTSERVICE_CALLBACK', 'https://agapeconnect.me/casLogin.aspx' ),
+			/** @var string PGT Service endpoint URL */
+			'endpoint' => ENV( 'PGTSERVICE_ENDPOINT', 'https://agapeconnect.me/DesktopModules/AgapeConnect/casauth/pgtcallback.asmx/RetrievePGTCallback' ),
+			/** @var string PGT Service Username */
+			'username' => ENV( 'PGTSERVICE_USERNAME', '' ),
+			/** @var string PGT Service Password */
+			'password' => ENV( 'PGTSERVICE_PASSWORD', '' ),
+		),
+
+		/**
+		 * CAS Settings
+		 */
+		'cas'           => array(
+			/** @var string CAS hostname */
+			'hostname' => ENV( 'CAS_HOSTNAME', 'thekey.me' ),
+			/** @var int CAS port */
+			'port'     => ENV( 'CAS_PORT', 443 ),
+			/** @var string CAS context */
+			'context'  => ENV( 'CAS_CONTEXT', 'cas' ),
+		),
+
+		/**
+		 * Rails CAS Auth API
+		 */
+		'cas-auth-api'  => array(
+			/** @var string API endpoint, no training slash */
+			'endpoint' => ENV( 'CAS_AUTH_API', '' ),
+		),
+
+		/**
+		 * MPD Dashboard API
+		 */
+		'mpd-dashboard' => array(
+			/** @var string API endpoint, no training slash */
+			'endpoint' => ENV( 'MPD_DASHBOARD_API', '' ),
+		),
+	);
+}
