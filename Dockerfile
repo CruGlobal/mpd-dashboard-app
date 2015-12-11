@@ -4,6 +4,8 @@ MAINTAINER cru.org <wmd@cru.org>
 # Nginx is pointed at /var/www/app as document root
 # App is installed at /home/app
 
+RUN env
+
 # Configure Newrelic
 RUN sed -i -e"s/REPLACE_WITH_REAL_KEY/$NEWRELIC_KEY/" /usr/local/etc/php/conf.d/newrelic.ini \
 	&& sed -i -e"s/PHP Application/$PROJECT_NAME \($ENVIRONMENT\)/" /usr/local/etc/php/conf.d/newrelic.ini
