@@ -14,5 +14,5 @@ RUN npm install \
 
 # Copy post-deploy scripts
 RUN mkdir -p /home/app/bin
-COPY docker/post-deploy.sh /home/app/bin
-COPY docker/supervisord-post-deploy.conf /etc/supervisor/conf.d
+COPY docker/post-deploy.sh /home/app/bin/
+COPY docker/supervisord-post-deploy.conf /etc/supervisor/conf.d/
