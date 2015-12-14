@@ -39,7 +39,10 @@
 		private function __construct() {
 			//Load config
 			$configDir = dirname( dirname( __FILE__ ) ) . '/config';
-			Config::load( require $configDir . '/config.php', require $configDir . '/defaults.php' );
+			Config::load( file_exists(
+				$configDir . '/config.php' ) ? require $configDir . '/config.php' : array(),
+				require $configDir . '/defaults.php'
+			);
 
 			//Generate Current URL taking into account forwarded proto
 			$url = \Net_URL2::getRequested();
@@ -47,7 +50,7 @@
 			$url->setPath( dirname( $_SERVER[ 'PHP_SELF' ] ) );
 			if ( isset( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] ) )
 				$url->setScheme( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] );
-			$this->url = $url;
+			$this->url  = $url;
 			$this->path = $this->url->getPath();
 
 			// Initialize phpCAS proxy client
