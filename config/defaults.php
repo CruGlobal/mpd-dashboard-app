@@ -6,7 +6,7 @@
 	 * @return string
 	 */
 	function ENV( $var, $default = '' ) {
-		return $_SERVER[ $var ] ?: $default;
+		return array_key_exists( $var, $_SERVER ) ? $_SERVER[ $var ] : $default;
 	}
 
 	return array(
@@ -39,7 +39,7 @@
 		 */
 		'pgtservice'    => array(
 			/** @var bool Enable PGT Service */
-			'enabled'  => ENV( 'PGTSERVICE_ENABLED', false ),
+			'enabled'  => (bool) ENV( 'PGTSERVICE_ENABLED', false ),
 			/** @var string PGT Service proxy callback URL */
 			'callback' => ENV( 'PGTSERVICE_CALLBACK', 'https://agapeconnect.me/casLogin.aspx' ),
 			/** @var string PGT Service endpoint URL */
