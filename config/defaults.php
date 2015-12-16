@@ -13,7 +13,7 @@
 		/**
 		 * Application Settings
 		 */
-		'application'   => array(
+		'application' => array(
 			/**
 			 * Application version
 			 */
@@ -37,9 +37,9 @@
 		 *
 		 * Enable this to use the php wrapper on localhost.
 		 */
-		'pgtservice'    => array(
+		'pgtservice'  => array(
 			/** @var bool Enable PGT Service */
-			'enabled'  => (bool) ENV( 'PGTSERVICE_ENABLED', false ),
+			'enabled'  => (bool)ENV( 'PGTSERVICE_ENABLED', false ),
 			/** @var string PGT Service proxy callback URL */
 			'callback' => ENV( 'PGTSERVICE_CALLBACK', 'https://agapeconnect.me/casLogin.aspx' ),
 			/** @var string PGT Service endpoint URL */
@@ -53,13 +53,18 @@
 		/**
 		 * CAS Settings
 		 */
-		'cas'           => array(
+		'cas'         => array(
 			/** @var string CAS hostname */
 			'hostname' => ENV( 'CAS_HOSTNAME', 'thekey.me' ),
 			/** @var int CAS port */
 			'port'     => ENV( 'CAS_PORT', 443 ),
 			/** @var string CAS context */
 			'context'  => ENV( 'CAS_CONTEXT', 'cas' ),
+		),
+
+		'redis'         => array(
+			'hostname' => ENV( 'REDIS_PORT_6379_TCP_ADDR', false ),
+			'port'     => 6379,
 		),
 
 		/**
