@@ -72,17 +72,14 @@
 				$casClient->setPGTStorage( new ProxyTicketServiceStorage( $casClient ) );
 			}
 			else if ( false !== Config::get( 'redis.hostname', false ) ) {
+				$casClient->setCallbackURL( $this->url->getURL() . '/callback.php' );
+
 				$redis = new \Redis();
-				$redis->connect(
-					Config::get( 'redis.hostname' ),
-					Config::get( 'redis.port', 6379 ),
-					2,
-					null,
-					100
-				);
-				$prefix = Config::get( 'application.project_name' ) . ':PGTIOU:';
-				$casClient->setCallbackURL( Config::get( 'pgtservice.callback' ) );
-				$casClient->setPGTStorage( new RedisTicketStorage( $casClient, $redis, $prefix ) );
+				$redis->connect( Config::get( 'redis.hostname' ), Config::get( 'redis.port', 6379 ), 2, null, 100 );
+				$redis->setOption( \Redis::OPT_SERIALIZER, \Redis::SERIALIZER_PHP );
+				$redis->setOption( \Redis::OPT_PREFIX, Config::get( 'application.project_name' ) . ':PHPCAS_TICKET_STORAGE:' );
+				$redis->select( Config::get( 'redis.hostname', 2 ) );
+				$casClient->setPGTStorage( new RedisTicketStorage( $casClient, $redis ) );
 			}
 			else {
 				$casClient->setCallbackURL( $this->url->getURL() . '/callback.php' );

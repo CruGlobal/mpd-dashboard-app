@@ -17,12 +17,12 @@
 			/**
 			 * Application version
 			 */
-			'version'      => '1.0.3',
+			'version'      => '1.0.4',
 
 			/**
 			 * Project Name
 			 */
-			'project_name' => ENV( 'PROJECT_NAME', '' ),
+			'project_name' => ENV( 'PROJECT_NAME', 'mpd-dashboard-app' ),
 
 			/**
 			 * Application Environment
@@ -62,9 +62,13 @@
 			'context'  => ENV( 'CAS_CONTEXT', 'cas' ),
 		),
 
+		/**
+		 * Redis Settings
+		 */
 		'redis'         => array(
 			'hostname' => ENV( 'REDIS_PORT_6379_TCP_ADDR', false ),
 			'port'     => 6379,
+			'db'       => ENV( 'REDIS_DB_INDEX', 2 ),
 		),
 
 		/**
