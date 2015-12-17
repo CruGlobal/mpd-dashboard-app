@@ -21,11 +21,15 @@
 		}
 
 		function write( $pgt, $pgt_iou ) {
-			$this->_redis->set( $pgt_iou, $pgt );
+			$this->_redis->setex( $pgt_iou, 600, $pgt );
 		}
 
 		function read( $pgt_iou ) {
-			return $this->_redis->get( $pgt_iou );
+			$pgt = $this->_redis->get( $pgt_iou );
+			if ( false !== $pgt ) {
+				$this->_redis->delete( $pgt_iou );
+			}
+			return $pgt;
 		}
 	}
 }
