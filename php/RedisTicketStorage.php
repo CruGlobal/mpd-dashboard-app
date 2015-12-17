@@ -7,11 +7,9 @@
 		 */
 		private $_redis;
 
-		public function __construct( $cas_parent, $redis, $prefix ) {
+		public function __construct( $cas_parent, $redis ) {
 			parent::__construct( $cas_parent );
 			$this->_redis = $redis;
-			$this->_redis->setOption( \Redis::OPT_SERIALIZER, \Redis::SERIALIZER_PHP );
-			$this->_redis->setOption( \Redis::OPT_PREFIX, $prefix );
 		}
 
 		function getStorageType() {
