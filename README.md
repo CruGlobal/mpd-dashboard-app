@@ -1,12 +1,12 @@
 # mpd-dashboard-app
 MPD Dashboard Application
 
-This repository uses git-flow for feature and release management. All development should be on the develop branch or a fork of it.
+This repository uses git-flow for feature and release management. All development should be on the staging branch or a fork of it.
 
 ## Installation on localhost
 Clone the repo
 ```bash
-git clone -b develop https://github.com/GlobalTechnology/mpd-dashboard-app.git mpd-dashboard-app
+git clone -b staging https://github.com/CruGlobal/mpd-dashboard-app.git mpd-dashboard-app
 cd mpd-dashboard-app
 ```
 Install Composer and Download PHP Dependencies
