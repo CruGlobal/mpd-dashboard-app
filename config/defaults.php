@@ -17,7 +17,7 @@
 			/**
 			 * Application version
 			 */
-			'version'      => '1.0.4',
+			'version'      => '1.0.5',
 
 			/**
 			 * Project Name
