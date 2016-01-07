@@ -13,7 +13,7 @@
 		/**
 		 * Application Settings
 		 */
-		'application' => array(
+		'application'   => array(
 			/**
 			 * Application version
 			 */
@@ -30,6 +30,14 @@
 			 * Valid values (production, staging, development)
 			 */
 			'environment'  => ENV( 'ENVIRONMENT', 'production' ),
+
+			/**
+			 * Application directory
+			 *
+			 * Location where where index.html, javascript, styles should be loaded from.
+			 * Valid values (dist, src)
+			 */
+			'directory'    => ENV( 'APPLICATION_DIR', 'dist' ),
 		),
 
 		/**
@@ -37,7 +45,7 @@
 		 *
 		 * Enable this to use the php wrapper on localhost.
 		 */
-		'pgtservice'  => array(
+		'pgtservice'    => array(
 			/** @var bool Enable PGT Service */
 			'enabled'  => (bool)ENV( 'PGTSERVICE_ENABLED', false ),
 			/** @var string PGT Service proxy callback URL */
@@ -53,7 +61,7 @@
 		/**
 		 * CAS Settings
 		 */
-		'cas'         => array(
+		'cas'           => array(
 			/** @var string CAS hostname */
 			'hostname' => ENV( 'CAS_HOSTNAME', 'thekey.me' ),
 			/** @var int CAS port */
