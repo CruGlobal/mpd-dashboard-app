@@ -51,7 +51,7 @@
 			if ( isset( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] ) )
 				$url->setScheme( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] );
 			$this->url  = $url;
-			$this->path = $this->url->getPath();
+			$this->path = rtrim( $this->url->getPath(), '/' );
 
 			// Initialize phpCAS proxy client
 			$this->casClient = $this->initializeCAS();
