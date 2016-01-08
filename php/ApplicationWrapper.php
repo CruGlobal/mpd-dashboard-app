@@ -107,7 +107,8 @@
 		}
 
 		public function appDir( $path = '' ) {
-			$url = $this->url->resolve( 'app/' . Config::get( 'application.directory', 'dist' ) . '/' . ltrim( $path, '/' ) );
+			$url = new \Net_URL2( $this->path . '/app/' . Config::get( 'application.directory', 'dist' ) . '/' . ltrim( $path, '/' ) );
+//			$url = $this->url->resolve( 'app/' . Config::get( 'application.directory', 'dist' ) . '/' . ltrim( $path, '/' ) );
 			$url->setQueryVariable( 'ver', Config::get( 'application.version', 'false' ) );
 			return $url->getURL();
 		}

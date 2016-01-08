@@ -16,11 +16,21 @@
 			MPDDashboard.config = <?php echo $wrapper->appConfig(); ?>;
 		</script>
 
-		<script type="application/javascript" src="<? echo $wrapper->appDir( "js/wrapper{$min}" ); ?>"></script>
+		<style>
+			body, html {
+				margin: 0; padding: 0; height: 100%; overflow: hidden;
+			}
+
+			#MPDDashboardApplication {
+				position:absolute; left: 0; right: 0; bottom: 0; top: 0; height: 100%;
+			}
+		</style>
+
+		<!--<script type="application/javascript" src="<? echo $wrapper->appDir( "wrapper{$min}.js" ); ?>"></script>-->
 	</head>
 	<body style="margin: 0;">
-	<iframe id="MPDDashboardApplication" src="<?php echo $wrapper->appDir( 'index.html' ); ?>" style="width: 100%; border-width: 0;" scrolling="no"></iframe>
-	<script type="application/javascript">iFrameResize( {minHeight: 500}, document.getElementById( 'MPDDashboardApplication' ) );</script>
+	<iframe id="MPDDashboardApplication" src="<?php echo $wrapper->appDir( 'index.html' ); ?>" style="width: 100%; border-width: 0;"></iframe>
+	<!--<script type="application/javascript">iFrameResize( {minHeight: 500}, document.getElementById( 'MPDDashboardApplication' ) );</script>-->
 	</body>
 	</html>
 <?php }
