@@ -14,10 +14,5 @@ else
 	sed -i -e"s/PHP Application/$PROJECT_NAME \($ENVIRONMENT\)/" /usr/local/etc/php/conf.d/newrelic.ini
 fi
 
-
 # Symlink application to nginx
-if [ "$ENVIRONMENT" = "production" ]; then
-	ln -nsf /home/app/dist /var/www/app;
-else
-	ln -nsf /home/app/src /var/www/app;
-fi
+ln -nsf /home/app /var/www/app;
