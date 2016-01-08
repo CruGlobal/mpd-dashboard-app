@@ -1,5 +1,5 @@
 FROM cruglobal/base-image-php:latest
-MAINTAINER cru.org <wmd@cru.org>
+MAINTAINER cru.org <apps@cru.org>
 
 # Nginx is pointed at /var/www/app as document root
 # App is installed at /home/app
