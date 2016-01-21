@@ -14,6 +14,13 @@
 		<script type="application/javascript">
 			var MPDDashboard = window.MPDDashboard = window.MPDDashboard || {};
 			MPDDashboard.config = <?php echo $wrapper->appConfig(); ?>;
+			MPDDashboard.config.errorCallback = function( reason ) {
+				if( reason.code === 'ERR_TICKET' ) {
+					var search = window.top.location.search;
+					var separator = search.length > 0 ? '&' : '';
+					window.top.location.search = search + separator + 'requestNewPGT';
+				}
+			};
 		</script>
 
 		<style>
