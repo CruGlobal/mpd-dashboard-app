@@ -19,7 +19,7 @@ Copy provided config.php to the config directory
 cp config.php config/
 ```
 
-Install npm, bower and componenets (install bower may require sudo)
+Install npm, bower and components (install bower may require sudo)
 ```bash
 cd app
 npm install
