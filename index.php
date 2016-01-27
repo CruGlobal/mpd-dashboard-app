@@ -33,7 +33,7 @@
 			}
 		</style>
 
-		<!--<script type="application/javascript" src="<? echo $wrapper->appDir( "wrapper{$min}.js" ); ?>"></script>-->
+		<!--<script type="application/javascript" src="<? echo $wrapper->appDir( "iframeResizer{$min}.js" ); ?>"></script>-->
 	</head>
 	<body style="margin: 0;">
 	<iframe id="MPDDashboardApplication" src="<?php echo $wrapper->appDir( 'index.html' ); ?>" style="width: 100%; border-width: 0;"></iframe>
