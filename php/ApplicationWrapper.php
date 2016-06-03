@@ -51,7 +51,7 @@
 			if ( isset( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] ) )
 				$url->setScheme( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] );
 			$this->url  = $url;
-			$this->path = $this->url->getPath();
+			$this->path = rtrim( $this->url->getPath(), '/' );
 
 			// Initialize phpCAS proxy client
 			$this->casClient = $this->initializeCAS();
@@ -78,7 +78,7 @@
 				$redis->connect( Config::get( 'redis.hostname' ), Config::get( 'redis.port', 6379 ), 2, null, 100 );
 				$redis->setOption( \Redis::OPT_SERIALIZER, \Redis::SERIALIZER_PHP );
 				$redis->setOption( \Redis::OPT_PREFIX, Config::get( 'application.project_name' ) . ':PHPCAS_TICKET_STORAGE:' );
-				$redis->select( (int) Config::get( 'redis.hostname', 2 ) );
+				$redis->select( (int)Config::get( 'redis.hostname', 2 ) );
 				$casClient->setPGTStorage( new RedisTicketStorage( $casClient, $redis ) );
 			}
 			else {
@@ -104,6 +104,12 @@
 
 		public function logout() {
 			$this->casClient->logout( array() );
+		}
+
+		public function appDir( $path = '' ) {
+			$url = new \Net_URL2( $this->path . '/app/' . Config::get( 'application.directory', 'dist' ) . '/' . ltrim( $path, '/' ) );
+			$url->setQueryVariable( 'ver', Config::get( 'application.version', 'false' ) );
+			return $url->getURL();
 		}
 
 		public function appConfig() {
