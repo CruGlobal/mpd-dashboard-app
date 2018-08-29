@@ -1,4 +1,4 @@
-FROM cruglobal/base-image-php:latest
+FROM 056154071827.dkr.ecr.us-east-1.amazonaws.com/base-image-php:latest
 MAINTAINER cru.org <apps@cru.org>
 
 # Nginx is pointed at /var/www/app as document root
@@ -14,8 +14,8 @@ RUN composer install --no-dev
 RUN set -x \
 	&& cd app \
 	&& npm install \
-	&& bower --allow-root install \
-	&& ./node_modules/.bin/gulp build \
+	&& npx bower --allow-root install \
+	&& npx gulp build \
 	&& cd ..
 
 # Copy post-deploy scripts
